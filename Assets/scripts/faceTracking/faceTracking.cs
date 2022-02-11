@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using DlibDotNet;
 using OpenCvSharp;
+using System.Runtime.InteropServices;
 
 public class faceTracking : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class faceTracking : MonoBehaviour
     [SerializeField] static int fps = 60;
     private static WebCamTexture webCamTexture;
     private static WebCamDevice webCamDevice;
+
+    private static VideoCapture videoCapture;
     private faceTracking() { }
 
     public static void trackingStart()
@@ -19,6 +22,7 @@ public class faceTracking : MonoBehaviour
 
     public static void changeDevice(WebCamDevice device)
     {
+        /*
         if (webCamTexture.isPlaying)
         {
             webCamTexture.Stop();
@@ -36,5 +40,35 @@ public class faceTracking : MonoBehaviour
 
             throw new Exception("change faild");
         }
+        */
+        webCamDevice = device;
+
+        videoCapture = new VideoCapture(0);
+
+        videoCapture.FrameWidth = width;
+        videoCapture.FrameHeight = height;
+        videoCapture.Fps = fps;
+    }
+
+    private void Tracking()
+    {
+        if (!videoCapture.IsOpened())
+        {
+            return;
+        }
+        Mat mat = new Mat();
+        videoCapture.Read(mat);
+        Mat resized = new Mat();
+
+        Cv2.Resize(mat, resized, new Size(320, 180));
+        mat.Release();
+
+        byte[] array = new byte[resized.Width * resized.Height * resized.ElemSize()];
+        Marshal.Copy(resized.Data, array, 0, array.Length);
+
+        Array2D<RgbPixel> image = Dlib.LoadImageData<RgbPixel>(array, (uint)resized.Height, (uint)resized.Width, (uint)(resized.Width * resized.ElemSize()));
+
+        FrontalFaceDetector detector = Dlib.GetFrontalFaceDetector();
+        Rectangle[] rectangles = detector.Operator(image);
     }
 }
