@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Live2D.Cubism.Core;
@@ -11,6 +10,7 @@ public class modelManager : MonoBehaviour
     private static string[] userIds;
     private static Dictionary<string, CubismModel3Json> models = new Dictionary<string, CubismModel3Json>();
     private static Dictionary<string, CubismModel> objects = new Dictionary<string,CubismModel>();
+    private modelManager() { }
 
     // Start is called before the first frame update
     void Start()

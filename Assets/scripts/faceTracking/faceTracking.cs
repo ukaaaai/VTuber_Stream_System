@@ -1,28 +1,23 @@
 using UnityEngine;
 using System;
+using DlibDotNet;
+using OpenCvSharp;
 
 public class faceTracking : MonoBehaviour
 {
-    [SerializeField] int width = 1920;
-    [SerializeField] int height = 1080;
-    [SerializeField] int fps = 60;
+    [SerializeField] static int width = 1920;
+    [SerializeField] static int height = 1080;
+    [SerializeField] static int fps = 60;
     private static WebCamTexture webCamTexture;
     private static WebCamDevice webCamDevice;
-
-    private static faceTracking _Instance = new faceTracking();
     private faceTracking() { }
 
-    public static faceTracking getInstance()
-    {
-        return _Instance;
-    }
-
-    public void trackingStart()
+    public static void trackingStart()
     {
 
     }
 
-    public void changeDevice(WebCamDevice device)
+    public static void changeDevice(WebCamDevice device)
     {
         if (webCamTexture.isPlaying)
         {

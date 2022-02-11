@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class Dropdown : MonoBehaviour
 {

@@ -2,14 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using UnityEngine;
-using UnityEngine.Events;
-using System;
 
 public class filePicker : MonoBehaviour
 {
-    [Serializable] class FilePick : UnityEvent<string> { }
-    [SerializeField] private FilePick filePick = new FilePick();
-
     public void OnClick()
     {
         OpenFileDialog openFileDialog = new OpenFileDialog();
