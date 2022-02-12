@@ -12,6 +12,8 @@ public class faceTracking : MonoBehaviour
     private static WebCamTexture webCamTexture;
     private static WebCamDevice webCamDevice;
 
+    private static string path = Application.dataPath + "/face_landmark_data/shape_predictor_68_face_landmarks.dat";
+
     private static VideoCapture videoCapture;
     private faceTracking() { }
 
@@ -71,7 +73,7 @@ public class faceTracking : MonoBehaviour
         FrontalFaceDetector detector = Dlib.GetFrontalFaceDetector();
         Rectangle[] rectangles = detector.Operator(image);
 
-        ShapePredictor shape = ShapePredictor.Deserialize("");
+        ShapePredictor shape = ShapePredictor.Deserialize(path);
 
         DlibDotNet.Point[] points = new DlibDotNet.Point[68];
 
