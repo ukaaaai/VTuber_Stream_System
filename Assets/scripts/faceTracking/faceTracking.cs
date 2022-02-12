@@ -70,5 +70,17 @@ public class faceTracking : MonoBehaviour
 
         FrontalFaceDetector detector = Dlib.GetFrontalFaceDetector();
         Rectangle[] rectangles = detector.Operator(image);
+
+        ShapePredictor shape = ShapePredictor.Deserialize("");
+
+        DlibDotNet.Point[] points = new DlibDotNet.Point[68];
+
+        using (FullObjectDetection shapes = shape.Detect(image, rectangles[0]))
+        {
+            for(uint i = 0; i < points.Length; i++)
+            {
+                points[i] = shapes.GetPart(i);
+            }
+        }
     }
 }
