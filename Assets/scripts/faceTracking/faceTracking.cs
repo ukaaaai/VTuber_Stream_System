@@ -138,6 +138,9 @@ public class faceTracking : MonoBehaviour
         obj_position.y = (float)pos_double[1];
         obj_position.z = (float)pos_double[2];
         obj_rotation = RotMatToQuatanion(proj).eulerAngles;
+
+        Texture2D tex = new Texture2D(projMatrix_mat.Height, projMatrix_mat.Width);
+        tex.LoadImage(projMatrix_mat.ImEncode());
     }
 
     private Quaternion RotMatToQuatanion(double[] projmat)
