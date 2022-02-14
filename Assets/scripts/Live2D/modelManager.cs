@@ -13,8 +13,12 @@ public class modelManager : MonoBehaviour
     private modelManager() { }
 
     // Start is called before the first frame update
-    void Start()
+
+    public static void Init()
     {
+        models.Clear();
+        objects.Clear();
+
         try
         {
             var path = Application.dataPath + "/Live2D/Cubism/Samples/Models/Koharu/Koharu.model3.json";
@@ -22,12 +26,6 @@ public class modelManager : MonoBehaviour
             objects[GameManager.getUserName()] = models[GameManager.getUserName()].ToModel();
         }
         catch (Exception) { }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public static void AddModel(string path)
