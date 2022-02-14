@@ -45,14 +45,14 @@ public class faceTracking : MonoBehaviour
         */
         webCamDevice = device;
 
-        videoCapture = new VideoCapture(webCamDevice.name);
+        videoCapture = new VideoCapture(0);
 
         videoCapture.FrameWidth = width;
         videoCapture.FrameHeight = height;
         videoCapture.Fps = fps;
     }
 
-    private void Tracking()
+    private unsafe void Tracking()
     {
         if (!videoCapture.IsOpened())
         {
@@ -141,6 +141,8 @@ public class faceTracking : MonoBehaviour
 
         Texture2D tex = new Texture2D(projMatrix_mat.Height, projMatrix_mat.Width);
         tex.LoadImage(projMatrix_mat.ImEncode());
+
+        tracking_debug.getTexture(tex);
     }
 
     private Quaternion RotMatToQuatanion(double[] projmat)
