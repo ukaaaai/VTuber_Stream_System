@@ -31,5 +31,6 @@ public class Dropdown : MonoBehaviour
     {
         WebCamDevice device = devices[dropdown.value];
         cameraChangeEvent.Invoke(device);
+        faceTracking.changeDevice(device);
     }
 }
