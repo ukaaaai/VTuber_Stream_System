@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
 
     private GameManager() { }
 
+    private void Awake()
+    {
+        modelManager.Init();
+    }
+
     void Start()
     {
         
