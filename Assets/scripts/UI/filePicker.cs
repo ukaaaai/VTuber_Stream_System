@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class filePicker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnClick()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        try
+        {
+            string path = FilePick.getInstance().filePick();
+            Debug.Log(path);
+        }
+        catch (Exception)
+        {
+            Debug.Log("file is not selected or file select is faild");
+        }
     }
 }
