@@ -9,6 +9,7 @@ public class filePicker : MonoBehaviour
         {
             string path = FilePick.getInstance().filePick();
             Debug.Log(path);
+            model_manager.AddModel(path);
         }
         catch (Exception)
         {

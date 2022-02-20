@@ -5,7 +5,7 @@ using Live2D.Cubism.Framework.Json;
 using System;
 using System.IO;
 
-public class model_manager
+public class model_manager : MonoBehaviour
 {
     private static List<string> userIds = new List<string>();
     private static Dictionary<string, CubismModel3Json> models = new Dictionary<string,CubismModel3Json>();
@@ -13,9 +13,6 @@ public class model_manager
 
     //Singleton
     private model_manager() { }
-    public static model_manager _instance = new model_manager();
-
-    public static model_manager getInstance() => _instance;
 
     public static object BuiltinLoadAssetAtPath(Type assetType, string path)
     {
@@ -38,7 +35,7 @@ public class model_manager
         throw new NotSupportedException();
     }
 
-    public void AddModel(string path) {
+    public static void AddModel(string path) {
         try
         {
             models[GameManager.getUsername()] = CubismModel3Json.LoadAtPath(path);
@@ -55,6 +52,6 @@ public class model_manager
         catch { }
     }
 
-    public Dictionary<string, CubismModel3Json> getmodels() => models;
-    public Dictionary<string, CubismModel> getObjects() => objects;
+    public static Dictionary<string, CubismModel3Json> getmodels() => models;
+    public static Dictionary<string, CubismModel> getObjects() => objects;
 }
