@@ -7,7 +7,7 @@ public class FilePick
     private FilePick() { }
     private static FilePick _instance = new FilePick();
 
-    public static FilePick getInstance() { return _instance; }
+    public static FilePick getInstance() => _instance;
 
     public string filePick()
     {
