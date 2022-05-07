@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1397
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: "\u30A4\u30F3\u30B9\u30DA\u30AF\u30BF\u30FC"
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 15
+  controlID: 212
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Window
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -68,14 +68,14 @@ MonoBehaviour:
     y: 0
     width: 605
     height: 1347
-  m_MinSize: {x: 101, y: 121}
+  m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 12}
+  m_ActualView: {fileID: 15}
   m_Panes:
-  - {fileID: 14}
-  - {fileID: 12}
-  m_Selected: 1
-  m_LastSelected: 0
+  - {fileID: 15}
+  - {fileID: 13}
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
+  m_Name: SceneHierarchyWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -97,11 +97,12 @@ MonoBehaviour:
     height: 798
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 15}
+  m_ActualView: {fileID: 16}
   m_Panes:
-  - {fileID: 15}
+  - {fileID: 16}
+  - {fileID: 12}
   m_Selected: 0
-  m_LastSelected: 0
+  m_LastSelected: 1
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -123,10 +124,10 @@ MonoBehaviour:
     height: 549
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 13}
+  m_ActualView: {fileID: 14}
   m_Panes:
-  - {fileID: 13}
-  - {fileID: 18}
+  - {fileID: 14}
+  - {fileID: 19}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &6
@@ -271,13 +272,419 @@ MonoBehaviour:
     height: 798
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 17}
+  m_ActualView: {fileID: 18}
   m_Panes:
-  - {fileID: 16}
   - {fileID: 17}
+  - {fileID: 18}
   m_Selected: 1
   m_LastSelected: 0
 --- !u!114 &12
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 139222468, guid: 8dc1be91775c4bb469f6b74cef450eaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: NuGet
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: -339
+    y: -1367
+    width: 483
+    height: 777
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+  hasRefreshed: 1
+  availablePackages:
+  - Id: Newtonsoft.Json
+    Version: 13.0.1
+    Title: Json.NET
+    Description: Json.NET is a popular high-performance JSON framework for .NET
+    Summary: 
+    ReleaseNotes: 
+    LicenseUrl: https://www.nuget.org/packages/Newtonsoft.Json/13.0.1/license
+    DownloadUrl: https://www.nuget.org/api/v2/package/Newtonsoft.Json/13.0.1
+    DownloadCount: 1896405851
+    Authors: James Newton-King
+    Icon: {fileID: 0}
+    ProjectUrl: https://www.newtonsoft.com/json
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: Microsoft.Extensions.DependencyInjection
+    Version: 6.0.0
+    Title: Microsoft.Extensions.DependencyInjection
+    Description: Default implementation of dependency injection for Microsoft.Extensions.DependencyInjection.
+    Summary: 
+    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
+    LicenseUrl: https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/6.0.0/license
+    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Extensions.DependencyInjection/6.0.0
+    DownloadCount: 1186088083
+    Authors: Microsoft
+    Icon: {fileID: 0}
+    ProjectUrl: https://dot.net/
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: Microsoft.Extensions.Logging
+    Version: 6.0.0
+    Title: Microsoft.Extensions.Logging
+    Description: Logging infrastructure default implementation for Microsoft.Extensions.Logging.
+    Summary: 
+    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
+    LicenseUrl: https://www.nuget.org/packages/Microsoft.Extensions.Logging/6.0.0/license
+    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Extensions.Logging/6.0.0
+    DownloadCount: 1124609392
+    Authors: Microsoft
+    Icon: {fileID: 0}
+    ProjectUrl: https://dot.net/
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: Serilog
+    Version: 2.11.0
+    Title: Serilog
+    Description: Simple .NET logging with fully-structured events
+    Summary: 
+    ReleaseNotes: 
+    LicenseUrl: https://www.nuget.org/packages/Serilog/2.11.0/license
+    DownloadUrl: https://www.nuget.org/api/v2/package/Serilog/2.11.0
+    DownloadCount: 437465905
+    Authors: Serilog Contributors
+    Icon: {fileID: 0}
+    ProjectUrl: https://serilog.net/
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: Microsoft.Bcl.AsyncInterfaces
+    Version: 6.0.0
+    Title: Microsoft.Bcl.AsyncInterfaces
+    Description: 'Provides the IAsyncEnumerable<T> and IAsyncDisposable interfaces
+      and helper types for .NET Standard 2.0. This package is not required starting
+      with .NET Standard 2.1 and .NET Core 3.0.
+
+
+      Commonly Used Types:
+
+      System.IAsyncDisposable
+
+      System.Collections.Generic.IAsyncEnumerable
+
+      System.Collections.Generic.IAsyncEnumerator'
+    Summary: 
+    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
+    LicenseUrl: https://www.nuget.org/packages/Microsoft.Bcl.AsyncInterfaces/6.0.0/license
+    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Bcl.AsyncInterfaces/6.0.0
+    DownloadCount: 409653123
+    Authors: Microsoft
+    Icon: {fileID: 0}
+    ProjectUrl: https://dot.net/
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: Microsoft.EntityFrameworkCore
+    Version: 6.0.4
+    Title: Microsoft.EntityFrameworkCore
+    Description: 'Entity Framework Core is a modern object-database mapper for .NET.
+      It supports LINQ queries, change tracking, updates, and schema migrations.
+      EF Core works with SQL Server, Azure SQL Database, SQLite, Azure Cosmos DB,
+      MySQL, PostgreSQL, and other databases through a provider plugin API.
+
+
+      Commonly
+      Used Types:
+
+      Microsoft.EntityFrameworkCore.DbContext
+
+      Microsoft.EntityFrameworkCore.DbSet'
+    Summary: 
+    ReleaseNotes: 
+    LicenseUrl: https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/6.0.4/license
+    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.EntityFrameworkCore/6.0.4
+    DownloadCount: 407297726
+    Authors: Microsoft
+    Icon: {fileID: 0}
+    ProjectUrl: https://docs.microsoft.com/ef/core/
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: System.Text.Json
+    Version: 6.0.3
+    Title: System.Text.Json
+    Description: 'Provides high-performance and low-allocating types that serialize
+      objects to JavaScript Object Notation (JSON) text and deserialize JSON text
+      to objects, with UTF-8 support built-in. Also provides types to read and write
+      JSON text encoded as UTF-8, and to create an in-memory document object model
+      (DOM), that is read-only, for random access of the JSON elements within a structured
+      view of the data.
+
+
+      Commonly Used Types:
+
+      System.Text.Json.JsonSerializer
+
+      System.Text.Json.JsonDocument
+
+      System.Text.Json.JsonElement
+
+      System.Text.Json.Utf8JsonWriter
+
+      System.Text.Json.Utf8JsonReader'
+    Summary: 
+    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
+    LicenseUrl: https://www.nuget.org/packages/System.Text.Json/6.0.3/license
+    DownloadUrl: https://www.nuget.org/api/v2/package/System.Text.Json/6.0.3
+    DownloadCount: 375682624
+    Authors: Microsoft
+    Icon: {fileID: 0}
+    ProjectUrl: https://dot.net/
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: Castle.Core
+    Version: 4.4.1
+    Title: Castle.Core
+    Description: Castle Core, including DynamicProxy, Logging Abstractions and DictionaryAdapter
+    Summary: 
+    ReleaseNotes: 
+    LicenseUrl: http://www.apache.org/licenses/LICENSE-2.0.html
+    DownloadUrl: https://www.nuget.org/api/v2/package/Castle.Core/4.4.1
+    DownloadCount: 361579141
+    Authors: Castle Project Contributors
+    Icon: {fileID: 0}
+    ProjectUrl: http://www.castleproject.org/
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: System.Drawing.Common
+    Version: 6.0.0
+    Title: System.Drawing.Common
+    Description: 'Provides access to GDI+ graphics functionality.
+
+
+      Commonly
+      Used Types:
+
+      System.Drawing.Bitmap
+
+      System.Drawing.BitmapData
+
+      System.Drawing.Brush
+
+      System.Drawing.Font
+
+      System.Drawing.Graphics
+
+      System.Drawing.Icon
+
+
+      Unix
+      support is disabled by default. See https://aka.ms/systemdrawingnonwindows
+      for more information.'
+    Summary: 
+    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
+    LicenseUrl: https://www.nuget.org/packages/System.Drawing.Common/6.0.0/license
+    DownloadUrl: https://www.nuget.org/api/v2/package/System.Drawing.Common/6.0.0
+    DownloadCount: 345668240
+    Authors: Microsoft
+    Icon: {fileID: 0}
+    ProjectUrl: https://dot.net/
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: Microsoft.Win32.SystemEvents
+    Version: 6.0.1
+    Title: Microsoft.Win32.SystemEvents
+    Description: 'Provides access to Windows system event notifications.
+
+
+      Commonly
+      Used Types:
+
+      Microsoft.Win32.SystemEvents'
+    Summary: 
+    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
+    LicenseUrl: https://www.nuget.org/packages/Microsoft.Win32.SystemEvents/6.0.1/license
+    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.Win32.SystemEvents/6.0.1
+    DownloadCount: 315994602
+    Authors: Microsoft
+    Icon: {fileID: 0}
+    ProjectUrl: https://dot.net/
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: Moq
+    Version: 4.17.2
+    Title: 'Moq: an enjoyable mocking library'
+    Description: 'Moq is the most popular and friendly mocking framework for .NET.
+
+
+      Built
+      from https://github.com/moq/moq4/tree/803ad5c99'
+    Summary: 
+    ReleaseNotes: A changelog is available at https://github.com/moq/moq4/blob/main/CHANGELOG.md.
+    LicenseUrl: https://raw.githubusercontent.com/moq/moq4/main/License.txt
+    DownloadUrl: https://www.nuget.org/api/v2/package/Moq/4.17.2
+    DownloadCount: 285468902
+    Authors: Daniel Cazzulino, kzu
+    Icon: {fileID: 0}
+    ProjectUrl: https://github.com/moq/moq4
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: AWSSDK.Core
+    Version: 3.7.11.1
+    Title: AWSSDK - Core Runtime
+    Description: The Amazon Web Services SDK for .NET - Core Runtime
+    Summary: 
+    ReleaseNotes: 
+    LicenseUrl: http://aws.amazon.com/apache2.0/
+    DownloadUrl: https://www.nuget.org/api/v2/package/AWSSDK.Core/3.7.11.1
+    DownloadCount: 256345021
+    Authors: Amazon Web Services
+    Icon: {fileID: 0}
+    ProjectUrl: https://github.com/aws/aws-sdk-net/
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: AutoMapper
+    Version: 11.0.1
+    Title: AutoMapper
+    Description: A convention-based object-object mapper.
+    Summary: 
+    ReleaseNotes: 
+    LicenseUrl: https://www.nuget.org/packages/AutoMapper/11.0.1/license
+    DownloadUrl: https://www.nuget.org/api/v2/package/AutoMapper/11.0.1
+    DownloadCount: 256243126
+    Authors: Jimmy Bogard
+    Icon: {fileID: 0}
+    ProjectUrl: https://automapper.org/
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: Microsoft.ApplicationInsights
+    Version: 2.20.0
+    Title: Application Insights API
+    Description: 'Application Insights Base API. This package provides core functionality
+      for transmission of all Application Insights Telemetry Types and is a dependent
+      package for all other Application Insights packages. Please install the platform
+      specific package for the best experience. Privacy statement: https://go.microsoft.com/fwlink/?LinkId=512156'
+    Summary: 
+    ReleaseNotes: "You should not use this nuget package for Win Phone, WinStore
+      and UWP applications. It is not supported starting 2.0.0.\n      For the release
+      notes please follow http://go.microsoft.com/fwlink/?LinkId=535037"
+    LicenseUrl: https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.20.0/license
+    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.ApplicationInsights/2.20.0
+    DownloadCount: 248942872
+    Authors: Microsoft
+    Icon: {fileID: 0}
+    ProjectUrl: https://go.microsoft.com/fwlink/?LinkId=392727
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: Newtonsoft.Json.Bson
+    Version: 1.0.2
+    Title: Newtonsoft.Json.Bson
+    Description: Json.NET BSON adds support for reading and writing BSON
+    Summary: 
+    ReleaseNotes: 
+    LicenseUrl: https://www.nuget.org/packages/Newtonsoft.Json.Bson/1.0.2/license
+    DownloadUrl: https://www.nuget.org/api/v2/package/Newtonsoft.Json.Bson/1.0.2
+    DownloadCount: 243630532
+    Authors: James Newton-King
+    Icon: {fileID: 0}
+    ProjectUrl: http://www.newtonsoft.com/json
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  updatePackages:
+  - Id: DlibDotNet
+    Version: 19.21.0.20220429
+    Title: DlibDotNet
+    Description: 'Dlib wrapper library written in C++ and C# for Windows, MacOS and
+      Linux
+
+
+      Requirements: Visual C++ 2017 Redistributable Package'
+    Summary: 
+    ReleaseNotes: 
+    LicenseUrl: https://aka.ms/deprecateLicenseUrl
+    DownloadUrl: https://www.nuget.org/api/v2/package/DlibDotNet/19.21.0.20220429
+    DownloadCount: 109810
+    Authors: Takuya Takeuchi
+    Icon: {fileID: 0}
+    ProjectUrl: https://github.com/takuya-takeuchi/DlibDotNet
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  - Id: System.Drawing.Common
+    Version: 6.0.0
+    Title: System.Drawing.Common
+    Description: 'Provides access to GDI+ graphics functionality.
+
+
+      Commonly
+      Used Types:
+
+      System.Drawing.Bitmap
+
+      System.Drawing.BitmapData
+
+      System.Drawing.Brush
+
+      System.Drawing.Font
+
+      System.Drawing.Graphics
+
+      System.Drawing.Icon
+
+
+      Unix
+      support is disabled by default. See https://aka.ms/systemdrawingnonwindows
+      for more information.'
+    Summary: 
+    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
+    LicenseUrl: https://licenses.nuget.org/MIT
+    DownloadUrl: https://www.nuget.org/api/v2/package/System.Drawing.Common/6.0.0
+    DownloadCount: 346301575
+    Authors: Microsoft
+    Icon: {fileID: 0}
+    ProjectUrl: https://dot.net/
+    RepositoryUrl: 
+    RepositoryType: 0
+    RepositoryBranch: 
+    RepositoryCommit: 
+  numberToSkip: 0
+  defaultIcon: {fileID: 2800000, guid: eec19781926cd2248b7c9abfde8db555, type: 3}
+--- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,13 +712,13 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
-  progressMessageClearTime: 39.787783700000006
+  progressMessageClearTime: 565.9264172
   notificationClearTime: -1
   timeSinceLastRotation: -1
   currentBranchAndRemoteHasUpdate: 0
   currentTrackingStatusHasUpdate: 0
-  currentStatusEntriesHasUpdate: 0
-  repositoryProgressHasUpdate: 0
+  currentStatusEntriesHasUpdate: 1
+  repositoryProgressHasUpdate: 1
   appManagerProgressHasUpdate: 0
   changeTab: 3
   activeTab: 3
@@ -325,8 +732,19 @@ MonoBehaviour:
     treeLocals:
       IsRemote: 0
       folders:
-        keys: []
-        values: []
+        keys:
+        - Local branches
+        values:
+        - path: Local branches
+          label: Local branches
+          level: 0
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 0
+          checkState: 0
       checkedFileNodes:
         keys: []
         values: []
@@ -335,7 +753,27 @@ MonoBehaviour:
       displayRootNode: 1
       isSelectable: 1
       isCheckable: 0
-      nodes: []
+      nodes:
+      - path: Local branches
+        label: Local branches
+        level: 0
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 0
+        checkState: 0
+      - path: master
+        label: master
+        level: 1
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 1
+        treeIsCheckable: 0
+        checkState: 0
       selectedNode:
         path: 
         label: 
@@ -350,8 +788,30 @@ MonoBehaviour:
     treeRemotes:
       IsRemote: 1
       folders:
-        keys: []
-        values: []
+        keys:
+        - Remote branches
+        - origin
+        values:
+        - path: Remote branches
+          label: Remote branches
+          level: 0
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 0
+          checkState: 0
+        - path: origin
+          label: origin
+          level: 1
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 0
+          checkState: 0
       checkedFileNodes:
         keys: []
         values: []
@@ -360,7 +820,37 @@ MonoBehaviour:
       displayRootNode: 1
       isSelectable: 1
       isCheckable: 0
-      nodes: []
+      nodes:
+      - path: Remote branches
+        label: Remote branches
+        level: 0
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 0
+        checkState: 0
+      - path: origin
+        label: origin
+        level: 1
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 0
+        checkState: 0
+      - path: origin/master
+        label: master
+        level: 2
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 0
+        checkState: 0
       selectedNode:
         path: 
         label: 
@@ -375,30 +865,34 @@ MonoBehaviour:
     mode: 0
     newBranchName: 
     scroll: {x: 0, y: 0}
-    disableDelete: 0
-    disableCreate: 0
+    disableDelete: 1
+    disableCreate: 1
     lastLocalAndRemoteBranchListChangedEvent:
-      updatedTimeString: 
-      cacheType: 0
+      updatedTimeString: 2022-05-07T11:05:32.947+09:00
+      cacheType: 2
     lastCurrentBranchAndRemoteChange:
-      updatedTimeString: 
-      cacheType: 0
+      updatedTimeString: 2022-05-07T11:04:51.415+09:00
+      cacheType: 1
     currentBranch:
-      name: 
-      tracking: 
+      name: master
+      tracking: origin/master
     currentRemote:
-      name: 
-      url: 
+      name: origin
+      url: https://github.com/snct-ukai/Live2D_chat
       login: 
       user: 
       host: 
       function: 0
       token: 
-    localBranches: []
-    remoteBranches: []
+    localBranches:
+    - name: master
+      tracking: origin/master
+    remoteBranches:
+    - name: origin/master
+      tracking: '[None]'
   changesView:
     currentBranchHasUpdate: 0
-    currentStatusEntriesHasUpdate: 0
+    currentStatusEntriesHasUpdate: 1
     currentLocksHasUpdate: 0
     commitBody: 
     commitMessage: 
@@ -406,1246 +900,11 @@ MonoBehaviour:
     treeScroll: {x: 0, y: 0}
     treeChanges:
       assets:
-        keys:
-        - 00000000000000001000000000000000
-        - 37c9d08d4153f9447aab204c87ddafc2
-        - d6ad133bb0a773948a7a7623636de512
-        - a1606de7a1e9ba14a92530abaa07a925
-        - 5985e9d77d8e041c08c7c820e0b470ce
-        - 054532c6e6d4e44a1a4a6799a359eb43
-        - 30a843ce6323d8b4bb6febd2d997df46
-        - b5a5f9238417f7441afa5a1b68f9c61b
-        - a3db5a9d6a398bd498bcb81cb684c949
-        - 0cd25900b6821d346824476d7529af29
-        - 17a9fe7f7a3b721499d9fc29934616a2
-        - d3ffe0b31abd753499a6b36239098aa7
-        - 1fa2f00602dfe06488d51b24619565b3
-        - 8111a2bbebfc2014c92395318f2e4277
-        - 5753b0caab03dd2428fcc64267316bbf
-        - c0c94fc29de6457428c1a846499aea52
-        - feed0d81a921a064aa6028956f50624d
-        - 6f0e06de47dbcee4c92ffcb3cbd11a22
-        - 9fa077a08e9a28746ad2c7bd749cc0af
-        - 21de162cb0cb2dd42ade5230e77274b3
-        - ab5d0db6607416d4b9a4898aca452630
-        - 591b72fd4827df642a10976748d7b653
-        - 62f4b59e6a2470e449f071e8a017570b
-        - 1e19eeaef5da51c409c704c48814fcbb
-        - a5316467e26e8a54a955c601ecb048a5
-        - 7de50f8fb451f644ab16f6c737b27a92
-        - 53dd6da128839414ab99d4af62cbc9af
-        - 287a61bdd64593b459a00a7a172cb7eb
-        - 807de10c929988d4da6edd0b53285cc2
-        - ec42dac546b921a41840dd0dfa18bf80
-        - 708efa1768927d848a81aba8ba77ed01
-        - 75ea643df7851af4b939424b7eb7e8f2
-        - d956c4909c2b8354ea85fe9ee5e8918a
-        - 6274ba2da87561d4288522a02c35091b
-        - 8d6821585d963c84d96c11ec8bb6d8fd
-        - d8c60aef31bbe764abe30228477589b5
-        - 452a6f3ab61a13e44a721d9f461f2bec
-        - f4b69eaf508ba764d8e9d9446f5038a0
-        - 591fa50c1b0b54146b02d115f0a14ba2
-        - 4e7b48ed57e5255458f6fe5514aaacd4
-        - d8059b10364a80b44823c2303fd20f62
-        - 17f2668c39c15c4439fbe451f6b7ad43
-        - 3a967094710739e4ab859deacd795b15
-        - 0000000000000000f100000000000000
-        - 0000000000000000e100000000000000
-        values:
-        - path: Assets
-          label: Assets
-          level: 0
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D
-          label: Live2D
-          level: 1
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism
-          label: Cubism
-          level: 2
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Plugins
-          label: Plugins
-          level: 3
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Plugins\Editor
-          label: Editor
-          level: 4
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
-          label: CubismiOSPluginProcessor.cs
-          level: 5
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
-            projectPath: Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples
-          label: Samples
-          level: 3
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models
-          label: Models
-          level: 4
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Clipping
-          label: Clipping
-          level: 5
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
-          label: Clipping.asset
-          level: 6
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
-          label: Clipping.prefab
-          level: 6
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Koharu
-          label: Koharu
-          level: 5
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation
-          label: Animation
-          level: 6
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
-          label: body.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
-          label: face01.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
-          label: face02.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
-          label: Koharu.asset
-          level: 6
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
-          label: Koharu.prefab
-          level: 6
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori
-          label: Natori
-          level: 5
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions
-          label: motions
-          level: 6
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
-          label: mtn_00.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
-          label: mtn_01.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
-          label: mtn_02.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
-          label: mtn_03.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
-          label: mtn_04.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
-          label: mtn_05.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
-          label: mtn_06.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
-          label: mtn_07.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
-          label: mtn_08.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
-          label: Natori.asset
-          level: 6
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
-          label: Natori.fadeMotionList.asset
-          level: 6
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
-          label: Natori.prefab
-          level: 6
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Rice
-          label: Rice
-          level: 5
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions
-          label: motions
-          level: 6
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
-          label: mtn_00.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
-          label: mtn_01.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
-          label: mtn_02.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
-          label: mtn_03.anim
-          level: 7
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
-          label: Rice.asset
-          level: 6
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
-          label: Rice.prefab
-          level: 6
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
-            fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
-            projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
-        - path: Assets\scripts
-          label: scripts
-          level: 1
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\scripts\logic
-          label: logic
-          level: 2
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\scripts\logic\faceTracking.cs
-          label: faceTracking.cs
-          level: 3
-          isFolder: 0
-          isContainer: 1
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: Assets\scripts\logic\faceTracking.cs
-            fullPath: A:\unity\face tracking\Assets\scripts\logic\faceTracking.cs
-            projectPath: Assets\scripts\logic\faceTracking.cs
-            originalPath: 
-            indexStatus: 1
-            workTreeStatus: 1
-        - path: ProjectSettings\MemorySettings.asset
-          label: MemorySettings.asset
-          level: 1
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: ProjectSettings\MemorySettings.asset
-            fullPath: A:\unity\face tracking\ProjectSettings\MemorySettings.asset
-            projectPath: ProjectSettings\MemorySettings.asset
-            originalPath: 
-            indexStatus: 1
-            workTreeStatus: 1
-        - path: ProjectSettings\ProjectVersion.txt
-          label: ProjectVersion.txt
-          level: 1
-          isFolder: 0
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: ProjectSettings\ProjectVersion.txt
-            fullPath: A:\unity\face tracking\ProjectSettings\ProjectVersion.txt
-            projectPath: ProjectSettings\ProjectVersion.txt
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 3
+        keys: []
+        values: []
       folders:
-        keys:
-        - Assets
-        - Assets\Live2D
-        - Assets\Live2D\Cubism
-        - Assets\Live2D\Cubism\Plugins
-        - Assets\Live2D\Cubism\Plugins\Editor
-        - Assets\Live2D\Cubism\Samples
-        - Assets\Live2D\Cubism\Samples\Models
-        - Assets\Live2D\Cubism\Samples\Models\Clipping
-        - Assets\Live2D\Cubism\Samples\Models\Koharu
-        - Assets\Live2D\Cubism\Samples\Models\Koharu\Animation
-        - Assets\Live2D\Cubism\Samples\Models\Natori
-        - Assets\Live2D\Cubism\Samples\Models\Natori\motions
-        - Assets\Live2D\Cubism\Samples\Models\Rice
-        - Assets\Live2D\Cubism\Samples\Models\Rice\motions
-        - Assets\scripts
-        - Assets\scripts\logic
-        - Packages
-        - ProjectSettings
-        - UserSettings
-        - UserSettings\Layouts
-        values:
-        - path: Assets
-          label: Assets
-          level: 0
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D
-          label: Live2D
-          level: 1
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism
-          label: Cubism
-          level: 2
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Plugins
-          label: Plugins
-          level: 3
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Plugins\Editor
-          label: Editor
-          level: 4
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples
-          label: Samples
-          level: 3
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models
-          label: Models
-          level: 4
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Clipping
-          label: Clipping
-          level: 5
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Koharu
-          label: Koharu
-          level: 5
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation
-          label: Animation
-          level: 6
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori
-          label: Natori
-          level: 5
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions
-          label: motions
-          level: 6
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Rice
-          label: Rice
-          level: 5
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions
-          label: motions
-          level: 6
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\scripts
-          label: scripts
-          level: 1
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Assets\scripts\logic
-          label: logic
-          level: 2
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: Packages
-          label: Packages
-          level: 0
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: ProjectSettings
-          label: ProjectSettings
-          level: 0
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: UserSettings
-          label: UserSettings
-          level: 0
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
-        - path: UserSettings\Layouts
-          label: Layouts
-          level: 1
-          isFolder: 1
-          isContainer: 0
-          isCollapsed: 0
-          isHidden: 0
-          isActive: 0
-          treeIsCheckable: 1
-          checkState: 0
-          isLocked: 0
-          gitStatusEntry:
-            path: 
-            fullPath: 
-            projectPath: 
-            originalPath: 
-            indexStatus: 0
-            workTreeStatus: 0
+        keys: []
+        values: []
       checkedFileNodes:
         keys: []
         values: []
@@ -1674,1014 +933,6 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
-      - path: Assets
-        label: Assets
-        level: 0
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D
-        label: Live2D
-        level: 1
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D\Cubism
-        label: Cubism
-        level: 2
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D\Cubism\Plugins
-        label: Plugins
-        level: 3
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D\Cubism\Plugins\Editor
-        label: Editor
-        level: 4
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
-        label: CubismiOSPluginProcessor.cs
-        level: 5
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
-          projectPath: Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples
-        label: Samples
-        level: 3
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D\Cubism\Samples\Models
-        label: Models
-        level: 4
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D\Cubism\Samples\Models\Clipping
-        label: Clipping
-        level: 5
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
-        label: Clipping.asset
-        level: 6
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
-        label: Clipping.prefab
-        level: 6
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Koharu
-        label: Koharu
-        level: 5
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation
-        label: Animation
-        level: 6
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
-        label: body.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
-        label: face01.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
-        label: face02.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
-        label: Koharu.asset
-        level: 6
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
-        label: Koharu.prefab
-        level: 6
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori
-        label: Natori
-        level: 5
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions
-        label: motions
-        level: 6
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
-        label: mtn_00.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
-        label: mtn_01.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
-        label: mtn_02.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
-        label: mtn_03.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
-        label: mtn_04.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
-        label: mtn_05.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
-        label: mtn_06.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
-        label: mtn_07.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
-        label: mtn_08.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
-        label: Natori.asset
-        level: 6
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
-        label: Natori.fadeMotionList.asset
-        level: 6
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
-        label: Natori.prefab
-        level: 6
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Rice
-        label: Rice
-        level: 5
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions
-        label: motions
-        level: 6
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
-        label: mtn_00.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
-        label: mtn_01.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
-        label: mtn_02.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
-        label: mtn_03.anim
-        level: 7
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
-        label: Rice.asset
-        level: 6
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
-        label: Rice.prefab
-        level: 6
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
-          fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
-          projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Assets\scripts
-        label: scripts
-        level: 1
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\scripts\logic
-        label: logic
-        level: 2
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Assets\scripts\logic\faceTracking.cs
-        label: faceTracking.cs
-        level: 3
-        isFolder: 0
-        isContainer: 1
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\scripts\logic\faceTracking.cs
-          fullPath: A:\unity\face tracking\Assets\scripts\logic\faceTracking.cs
-          projectPath: Assets\scripts\logic\faceTracking.cs
-          originalPath: 
-          indexStatus: 1
-          workTreeStatus: 1
-      - path: Assets\scripts\logic\faceTracking.cs.meta
-        label: faceTracking.cs.meta
-        level: 4
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Assets\scripts\logic\faceTracking.cs.meta
-          fullPath: A:\unity\face tracking\Assets\scripts\logic\faceTracking.cs.meta
-          projectPath: Assets\scripts\logic\faceTracking.cs.meta
-          originalPath: 
-          indexStatus: 1
-          workTreeStatus: 1
-      - path: Packages
-        label: Packages
-        level: 0
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: Packages\manifest.json
-        label: manifest.json
-        level: 1
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Packages\manifest.json
-          fullPath: A:\unity\face tracking\Packages\manifest.json
-          projectPath: Packages\manifest.json
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: Packages\packages-lock.json
-        label: packages-lock.json
-        level: 1
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: Packages\packages-lock.json
-          fullPath: A:\unity\face tracking\Packages\packages-lock.json
-          projectPath: Packages\packages-lock.json
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: ProjectSettings
-        label: ProjectSettings
-        level: 0
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: ProjectSettings\boot.config
-        label: boot.config
-        level: 1
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: ProjectSettings\boot.config
-          fullPath: A:\unity\face tracking\ProjectSettings\boot.config
-          projectPath: ProjectSettings\boot.config
-          originalPath: 
-          indexStatus: 1
-          workTreeStatus: 1
-      - path: ProjectSettings\MemorySettings.asset
-        label: MemorySettings.asset
-        level: 1
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: ProjectSettings\MemorySettings.asset
-          fullPath: A:\unity\face tracking\ProjectSettings\MemorySettings.asset
-          projectPath: ProjectSettings\MemorySettings.asset
-          originalPath: 
-          indexStatus: 1
-          workTreeStatus: 1
-      - path: ProjectSettings\ProjectVersion.txt
-        label: ProjectVersion.txt
-        level: 1
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: ProjectSettings\ProjectVersion.txt
-          fullPath: A:\unity\face tracking\ProjectSettings\ProjectVersion.txt
-          projectPath: ProjectSettings\ProjectVersion.txt
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 3
-      - path: ProjectSettings\TimelineSettings.asset
-        label: TimelineSettings.asset
-        level: 1
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: ProjectSettings\TimelineSettings.asset
-          fullPath: A:\unity\face tracking\ProjectSettings\TimelineSettings.asset
-          projectPath: ProjectSettings\TimelineSettings.asset
-          originalPath: 
-          indexStatus: 1
-          workTreeStatus: 1
-      - path: UserSettings
-        label: UserSettings
-        level: 0
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: UserSettings\Layouts
-        label: Layouts
-        level: 1
-        isFolder: 1
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: 
-          fullPath: 
-          projectPath: 
-          originalPath: 
-          indexStatus: 0
-          workTreeStatus: 0
-      - path: UserSettings\Layouts\default-2021.dwlt
-        label: default-2021.dwlt
-        level: 2
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: UserSettings\Layouts\default-2021.dwlt
-          fullPath: A:\unity\face tracking\UserSettings\Layouts\default-2021.dwlt
-          projectPath: UserSettings\Layouts\default-2021.dwlt
-          originalPath: 
-          indexStatus: 1
-          workTreeStatus: 1
-      - path: UserSettings\Search.settings
-        label: Search.settings
-        level: 1
-        isFolder: 0
-        isContainer: 0
-        isCollapsed: 0
-        isHidden: 0
-        isActive: 0
-        treeIsCheckable: 1
-        checkState: 0
-        isLocked: 0
-        gitStatusEntry:
-          path: UserSettings\Search.settings
-          fullPath: A:\unity\face tracking\UserSettings\Search.settings
-          projectPath: UserSettings\Search.settings
-          originalPath: 
-          indexStatus: 1
-          workTreeStatus: 1
       selectedNode:
         path: 
         label: 
@@ -2701,232 +952,16 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
-    gitStatusEntries:
-    - path: Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
-      projectPath: Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
-      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
-      projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Assets\scripts\logic\faceTracking.cs
-      fullPath: A:\unity\face tracking\Assets\scripts\logic\faceTracking.cs
-      projectPath: Assets\scripts\logic\faceTracking.cs
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Assets\scripts\logic\faceTracking.cs.meta
-      fullPath: A:\unity\face tracking\Assets\scripts\logic\faceTracking.cs.meta
-      projectPath: Assets\scripts\logic\faceTracking.cs.meta
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: Packages\manifest.json
-      fullPath: A:\unity\face tracking\Packages\manifest.json
-      projectPath: Packages\manifest.json
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: Packages\packages-lock.json
-      fullPath: A:\unity\face tracking\Packages\packages-lock.json
-      projectPath: Packages\packages-lock.json
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: ProjectSettings\boot.config
-      fullPath: A:\unity\face tracking\ProjectSettings\boot.config
-      projectPath: ProjectSettings\boot.config
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\MemorySettings.asset
-      fullPath: A:\unity\face tracking\ProjectSettings\MemorySettings.asset
-      projectPath: ProjectSettings\MemorySettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: ProjectSettings\ProjectVersion.txt
-      fullPath: A:\unity\face tracking\ProjectSettings\ProjectVersion.txt
-      projectPath: ProjectSettings\ProjectVersion.txt
-      originalPath: 
-      indexStatus: 0
-      workTreeStatus: 3
-    - path: ProjectSettings\TimelineSettings.asset
-      fullPath: A:\unity\face tracking\ProjectSettings\TimelineSettings.asset
-      projectPath: ProjectSettings\TimelineSettings.asset
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: UserSettings\Layouts\default-2021.dwlt
-      fullPath: A:\unity\face tracking\UserSettings\Layouts\default-2021.dwlt
-      projectPath: UserSettings\Layouts\default-2021.dwlt
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    - path: UserSettings\Search.settings
-      fullPath: A:\unity\face tracking\UserSettings\Search.settings
-      projectPath: UserSettings\Search.settings
-      originalPath: 
-      indexStatus: 1
-      workTreeStatus: 1
-    changedFilesText: 36 changed files
+    gitStatusEntries: []
+    changedFilesText: No changed files
     lastCurrentBranchChangedEvent:
-      updatedTimeString: 2022-05-07T11:04:03.742+09:00
+      updatedTimeString: 2022-05-07T11:10:20.371+09:00
       cacheType: 1
     lastStatusEntriesChangedEvent:
-      updatedTimeString: 2022-05-07T11:04:29.117+09:00
+      updatedTimeString: 2022-05-07T11:14:01.646+09:00
       cacheType: 6
     lastLocksChangedEvent:
-      updatedTimeString: 2022-05-07T11:04:03.746+09:00
+      updatedTimeString: 0001-01-01T00:00:00.000+00:00
       cacheType: 7
   historyView:
     currentLogHasUpdate: 0
@@ -10019,9 +8054,9 @@ MonoBehaviour:
         originalPath: 
         indexStatus: 4
         workTreeStatus: 0
-    statusAhead: 1
+    statusAhead: 0
     lastLogChangedEvent:
-      updatedTimeString: 2022-05-07T11:00:45.332+09:00
+      updatedTimeString: 2022-05-07T11:06:57.091+09:00
       cacheType: 3
     lastTrackingStatusChangedEvent:
       updatedTimeString: 0001-01-01T00:00:00.000+00:00
@@ -17116,7 +15151,7 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 4
           workTreeStatus: 0
-      statusAhead: 1
+      statusAhead: 0
       selectedIndex: -1
     selectedEntry:
       commitID: 
@@ -17170,32 +15205,32 @@ MonoBehaviour:
     detailsScroll: {x: 0, y: 0}
   settingsView:
     gitPathView:
-      gitPath: 
-      gitLfsPath: 
+      gitPath: C:\Program Files\Git\cmd\git.exe
+      gitLfsPath: C:\Users\ukai\AppData\Local\GitHubUnity\git-lfs\git-lfs.exe
       errorMessage: 
       resetToBundled: 0
       resetToSystem: 0
       changingManually: 0
-    hasRemote: 0
+    hasRemote: 1
     lastCurrentRemoteChangedEvent:
-      updatedTimeString: 
-      cacheType: 0
-    metricsEnabled: 0
-    newRepositoryRemoteUrl: 
-    repositoryRemoteName: 
-    repositoryRemoteUrl: 
+      updatedTimeString: 2022-05-07T11:04:51.415+09:00
+      cacheType: 1
+    metricsEnabled: 1
+    newRepositoryRemoteUrl: https://github.com/snct-ukai/Live2D_chat
+    repositoryRemoteName: origin
+    repositoryRemoteUrl: https://github.com/snct-ukai/Live2D_chat
     scroll: {x: 0, y: 0}
     userSettingsView:
-      gitName: 
-      gitEmail: 
-      newGitName: 
-      newGitEmail: 
+      gitName: snct-ukai
+      gitEmail: r02i08@ed.cc.suzuka-ct.ac.jp
+      newGitName: snct-ukai
+      newGitEmail: r02i08@ed.cc.suzuka-ct.ac.jp
       needsSaving: 0
       lastCheckUserChangedEvent:
-        updatedTimeString: 
-        cacheType: 0
-    webTimeout: 0
-    gitTimeout: 0
+        updatedTimeString: 2022-05-07T11:05:35.202+09:00
+        cacheType: 8
+    webTimeout: 3000
+    gitTimeout: 5000
   locksView:
     currentRemoteHasUpdate: 0
     currentStatusEntriesHasUpdate: 0
@@ -17219,18 +15254,234 @@ MonoBehaviour:
             email: 
           lockedAtString: 
         gitFileStatus: 0
-        lockedAt: 
+        lockedAt: 1 1 0001, 09:00
     lastCurrentRemoteChangedEvent:
-      updatedTimeString: 
-      cacheType: 0
+      updatedTimeString: 2022-05-07T11:04:51.415+09:00
+      cacheType: 1
     lastLocksChangedEvent:
-      updatedTimeString: 
-      cacheType: 0
+      updatedTimeString: 2022-05-07T11:06:56.659+09:00
+      cacheType: 7
     lastStatusEntriesChangedEvent:
-      updatedTimeString: 
-      cacheType: 0
+      updatedTimeString: 2022-05-07T11:06:57.845+09:00
+      cacheType: 6
     lockedFiles: []
-    gitStatusEntries: []
+    gitStatusEntries:
+    - path: Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
+      projectPath: Assets\Live2D\Cubism\Plugins\Editor\CubismiOSPluginProcessor.cs
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.asset
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Clipping\Clipping.prefab
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\body.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face01.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Animation\face02.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.asset
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Koharu\Koharu.prefab
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_00.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_01.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_02.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_03.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_04.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_05.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_06.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_07.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\motions\mtn_08.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.asset
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.fadeMotionList.asset
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Natori\Natori.prefab
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_00.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_01.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_02.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\motions\mtn_03.anim
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.asset
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
+      fullPath: A:\unity\face tracking\Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
+      projectPath: Assets\Live2D\Cubism\Samples\Models\Rice\Rice.prefab
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Assets\scripts\logic\faceTracking.cs
+      fullPath: A:\unity\face tracking\Assets\scripts\logic\faceTracking.cs
+      projectPath: Assets\scripts\logic\faceTracking.cs
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
+    - path: Assets\scripts\logic\faceTracking.cs.meta
+      fullPath: A:\unity\face tracking\Assets\scripts\logic\faceTracking.cs.meta
+      projectPath: Assets\scripts\logic\faceTracking.cs.meta
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
+    - path: Packages\manifest.json
+      fullPath: A:\unity\face tracking\Packages\manifest.json
+      projectPath: Packages\manifest.json
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Packages\packages-lock.json
+      fullPath: A:\unity\face tracking\Packages\packages-lock.json
+      projectPath: Packages\packages-lock.json
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: ProjectSettings\boot.config
+      fullPath: A:\unity\face tracking\ProjectSettings\boot.config
+      projectPath: ProjectSettings\boot.config
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
+    - path: ProjectSettings\MemorySettings.asset
+      fullPath: A:\unity\face tracking\ProjectSettings\MemorySettings.asset
+      projectPath: ProjectSettings\MemorySettings.asset
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
+    - path: ProjectSettings\ProjectVersion.txt
+      fullPath: A:\unity\face tracking\ProjectSettings\ProjectVersion.txt
+      projectPath: ProjectSettings\ProjectVersion.txt
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: ProjectSettings\TimelineSettings.asset
+      fullPath: A:\unity\face tracking\ProjectSettings\TimelineSettings.asset
+      projectPath: ProjectSettings\TimelineSettings.asset
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
+    - path: UserSettings\Layouts\default-2021.dwlt
+      fullPath: A:\unity\face tracking\UserSettings\Layouts\default-2021.dwlt
+      projectPath: UserSettings\Layouts\default-2021.dwlt
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
+    - path: UserSettings\Search.settings
+      fullPath: A:\unity\face tracking\UserSettings\Search.settings
+      projectPath: UserSettings\Search.settings
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
     currentUsername: 
     unlockFileMenuContent:
       m_Text: Release Lock
@@ -17246,7 +15497,7 @@ MonoBehaviour:
   currentRemoteUrl: https://github.com/snct-ukai/Live2D_chat
   statusAhead: 0
   statusBehind: 0
-  hasItemsToCommit: 1
+  hasItemsToCommit: 0
   isTrackingRemoteBranch: 1
   currentBranchContent:
     m_Text: master
@@ -17257,13 +15508,13 @@ MonoBehaviour:
     m_Image: {fileID: 0}
     m_Tooltip: Url of the origin remote
   lastCurrentBranchAndRemoteChangedEvent:
-    updatedTimeString: 2022-05-07T11:04:03.742+09:00
+    updatedTimeString: 2022-05-07T11:10:20.371+09:00
     cacheType: 1
   lastTrackingStatusChangedEvent:
-    updatedTimeString: 2022-05-07T11:04:03.768+09:00
+    updatedTimeString: 2022-05-07T11:12:58.376+09:00
     cacheType: 5
   lastStatusEntriesChangedEvent:
-    updatedTimeString: 2022-05-07T11:04:29.117+09:00
+    updatedTimeString: 2022-05-07T11:14:01.646+09:00
     cacheType: 6
   pullButtonContent:
     m_Text: Pull
@@ -17287,7 +15538,7 @@ MonoBehaviour:
   appManagerProgressMessage: Initialized
   connections: []
   primaryConnectionUsername: 
---- !u!114 &13
+--- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17302,7 +15553,7 @@ MonoBehaviour:
   m_MinSize: {x: 230, y: 250}
   m_MaxSize: {x: 10000, y: 10000}
   m_TitleContent:
-    m_Text: Project
+    m_Text: "\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8"
     m_Image: {fileID: -5467254957812901981, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
@@ -17328,22 +15579,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/scripts/logic
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/scripts/logic
   m_LastFoldersGridSize: -1
   m_LastProjectPath: A:\unity\face tracking
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ce540000
-    m_LastClickedID: 21710
-    m_ExpandedIDs: 00000000ce540000d0540000d2540000d4540000d654000000ca9a3bffffff7f
+    m_SelectedIDs: 5a580000
+    m_LastClickedID: 22618
+    m_ExpandedIDs: 00000000ce540000d0540000d2540000d4540000d6540000ec54000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -17398,7 +15649,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -17427,7 +15678,7 @@ MonoBehaviour:
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
---- !u!114 &14
+--- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17442,7 +15693,7 @@ MonoBehaviour:
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Inspector
+    m_Text: "\u30A4\u30F3\u30B9\u30DA\u30AF\u30BF\u30FC"
     m_Image: {fileID: -2667387946076563598, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
@@ -17468,7 +15719,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
---- !u!114 &15
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17483,7 +15734,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Hierarchy
+    m_Text: "\u30D2\u30A8\u30E9\u30EB\u30AD\u30FC"
     m_Image: {fileID: 7966133145522015247, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
@@ -17499,25 +15750,25 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 1efbffff
+      m_SelectedIDs: 1a540000
+      m_LastClickedID: 21530
+      m_ExpandedIDs: 1efbffff3854000042540000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Text
+        m_OriginalName: Text
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 21530
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
+        m_ClientGUIView: {fileID: 4}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -17525,7 +15776,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: 4c969a2b90040154d917609493e03593
---- !u!114 &16
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17540,7 +15791,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Scene
+    m_Text: "\u30B7\u30FC\u30F3"
     m_Image: {fileID: 2593428753322112591, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
@@ -17852,7 +16103,7 @@ MonoBehaviour:
   m_SceneVisActive: 1
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &17
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17867,7 +16118,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Game
+    m_Text: "\u30B2\u30FC\u30E0"
     m_Image: {fileID: -6423792434712278376, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
@@ -17944,7 +16195,7 @@ MonoBehaviour:
   m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
---- !u!114 &18
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17959,15 +16210,15 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Console
+    m_Text: "\u30B3\u30F3\u30BD\u30FC\u30EB"
     m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2249
-    y: 726.5
-    width: 920
-    height: 250
+    x: -339
+    y: -569
+    width: 1954
+    height: 528
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
