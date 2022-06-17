@@ -38,16 +38,16 @@ public class model_manager : MonoBehaviour
     public static void AddModel(string path) {
         try
         {
-            models[GameManager.getUsername()] = CubismModel3Json.LoadAtPath(path);
-            if (objects[GameManager.getUsername()])
+            models[GameManager.userId] = CubismModel3Json.LoadAtPath(path);
+            if (objects[GameManager.userId])
             {
                 try
                 {
-                    UnityEngine.Object.Destroy(objects[GameManager.getUsername()]);
+                    Destroy(objects[GameManager.userId]);
                 }
                 catch{ }
             }
-            objects[GameManager.getUsername()] = models[GameManager.getUsername()].ToModel();
+            objects[GameManager.userId] = models[GameManager.userId].ToModel();
         }
         catch { }
     }
