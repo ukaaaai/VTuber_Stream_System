@@ -5,15 +5,11 @@ public class Network
   //singleton
   private static Network _instance;
   private Network(){}
-  public static Network instance
+  public static Network Instance
   {
     get
     {
-      if (_instance == null)
-      {
-        _instance = new Network();
-      }
-      return _instance;
+      return _instance ??= new Network();
     }
   }
   //end singleton
