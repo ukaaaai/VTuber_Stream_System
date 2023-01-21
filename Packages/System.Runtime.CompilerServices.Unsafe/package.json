@@ -1,0 +1,15 @@
+{
+    "name": "org.nuget.system.runtime.compilerservices.unsafe",
+    "version": "6.0.0",
+    "displayName": "System.Runtime.CompilerServices.Unsafe",
+    "description": "Provides the System.Runtime.CompilerServices.Unsafe class, which provides generic, low-level functionality for manipulating pointers.\n\nCommonly Used Types:\nSystem.Runtime.CompilerServices.Unsafe",
+    "unity": "2018.3",
+    "keywords": [
+        ""
+    ],
+    "author": {
+        "name": "Microsoft",
+        "email": "",
+        "url": "https://dot.net/"
+    }
+}

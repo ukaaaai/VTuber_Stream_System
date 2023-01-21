@@ -50,3 +50,13 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 /Assets/Live2D
+/NuGet
+/Packages/DlibDotNet*/
+/Packages/OpenCVSharp*/
+/Packages/FaceRecognitionDotNet*/
+/Packages/System.Drawing.Common*/
+/.idea/
+/UserSettings/
+Assets/Nuget Importer
+/Assets/TextMesh Pro
+

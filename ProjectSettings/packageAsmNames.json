@@ -1,0 +1,42 @@
+{
+    "managedList": [
+        {
+            "packageName": "DlibDotNet",
+            "fileNames": [
+                "DlibDotNet"
+            ]
+        },
+        {
+            "packageName": "OpenCvSharp4.Windows",
+            "fileNames": []
+        },
+        {
+            "packageName": "OpenCvSharp4",
+            "fileNames": [
+                "OpenCvSharp"
+            ]
+        },
+        {
+            "packageName": "OpenCvSharp4.runtime.win",
+            "fileNames": []
+        },
+        {
+            "packageName": "System.Runtime.CompilerServices.Unsafe",
+            "fileNames": [
+                "System.Runtime.CompilerServices.Unsafe"
+            ]
+        },
+        {
+            "packageName": "FaceRecognitionDotNet",
+            "fileNames": [
+                "FaceRecognitionDotNet"
+            ]
+        },
+        {
+            "packageName": "System.Drawing.Common",
+            "fileNames": [
+                "System.Drawing.Common"
+            ]
+        }
+    ]
+}

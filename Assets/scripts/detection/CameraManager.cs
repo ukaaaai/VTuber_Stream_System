@@ -8,8 +8,8 @@ namespace detection
     {
         private readonly int _maxDevices;
 
-        private const int Width = 480;
-        private const int Height = 285;
+        private const int Width = 960;
+        private const int Height = 540;
         
         private WebCamTexture _webCamTexture;
         private string _currentDevice;
@@ -47,7 +47,7 @@ namespace detection
             _webCamTexture.Play();
         }
         
-        public Mat GetFrame()
+        public void GetFrame(out Mat mat)
         {
             if (!_webCamTexture.isPlaying)
             {
@@ -67,10 +67,8 @@ namespace detection
                     vec3B[n] = new Vec3b(c[n].b, c[n].g, c[n].r);
                 }
             });
-            using var mat = new Mat(height, width, MatType.CV_8UC3, vec3B);
-            using var resizedMat = new Mat();
-            Cv2.Resize(mat, resizedMat, new Size(Width, Height));
-            return resizedMat.Clone();
+            mat = new Mat(height, width, MatType.CV_8UC3, vec3B);
+            Cv2.Resize(mat, mat, new Size(Width, Height));
         }
 
         private void Stop()
