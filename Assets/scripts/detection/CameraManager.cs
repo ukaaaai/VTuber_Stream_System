@@ -1,5 +1,4 @@
 ﻿using OpenCvSharp;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace detection
@@ -8,8 +7,8 @@ namespace detection
     {
         private readonly int _maxDevices;
 
-        private const int Width = 960;
-        private const int Height = 540;
+        private const int Width = 720;
+        private const int Height = 405;
         
         private WebCamTexture _webCamTexture;
         private string _currentDevice;
@@ -56,19 +55,13 @@ namespace detection
             }
             var height = _webCamTexture.height;
             var width = _webCamTexture.width;
-            var c = _webCamTexture.GetPixels32();
-            var vec3B = new Vec3b[c.Length];
 
-            Parallel.For(0, height, i =>
-            {
-                for(var j = 0; j < width; j++)
-                {
-                    var n = i * width + j;
-                    vec3B[n] = new Vec3b(c[n].b, c[n].g, c[n].r);
-                }
-            });
-            mat = new Mat(height, width, MatType.CV_8UC3, vec3B);
-            Cv2.Resize(mat, mat, new Size(Width, Height));
+            mat = new Mat();
+            Cv2.Resize(
+                new Mat(height, width, MatType.CV_8UC4, _webCamTexture.GetPixels32()), 
+                mat, 
+                new Size(Width, Height));
+            Cv2.CvtColor(mat, mat, ColorConversionCodes.RGBA2BGR);
         }
 
         private void Stop()
