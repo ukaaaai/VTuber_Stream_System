@@ -7,8 +7,8 @@ namespace detection
     {
         private readonly int _maxDevices;
 
-        private const int Width = 720;
-        private const int Height = 405;
+        private const int Width = 768;
+        private const int Height = 432;
         
         private WebCamTexture _webCamTexture;
         private string _currentDevice;
