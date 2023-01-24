@@ -70,6 +70,7 @@ namespace detection
                     Scalar.Green,
                     -1);
             });
+            var vec = SolvePnP.Solve(points, image);
             Cv2.Flip(mat, mat, FlipMode.X);
             onCameraFrame.Invoke(mat);
         }
