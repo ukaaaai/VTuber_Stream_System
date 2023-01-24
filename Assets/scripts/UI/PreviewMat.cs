@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 using OpenCvSharp;
@@ -12,17 +13,12 @@ namespace UI
         {
             var width = mat.Width;
             var height = mat.Height;
-            var texture = new Texture2D(width, height, TextureFormat.RGBA32, false);
-            var c = new Color32[height * width];
-            for(var i = 0; i < height; i++)
-            {
-                for (var j = 0; j < width; j++)
-                {
-                    var color = mat.Get<Vec3b>(i, j);
-                    c[j + i * width] = new Color32(color.Item2, color.Item1, color.Item0, 255);
-                }
-            }
-            texture.SetPixels32(c);
+            var texture = new Texture2D(width, height, TextureFormat.RGB24, false);
+
+            Cv2.CvtColor(mat, mat, ColorConversionCodes.BGRA2RGB);
+            var bytes = new byte[mat.Total() * mat.Channels()];
+            Marshal.Copy(mat.Data, bytes, 0, bytes.Length);
+            texture.LoadRawTextureData(bytes);
             texture.Apply();
             rawImage.texture = texture;
         }
