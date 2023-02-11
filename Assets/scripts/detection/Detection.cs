@@ -64,13 +64,17 @@ namespace detection
             Parallel.For(0, 68, i =>
             {
                 points[i] = shapes.GetPart((uint)i);
-                Cv2.Circle(mat,
+                /*Cv2.Circle(mat,
                     new OpenCvSharp.Point(points[i].X, points[i].Y),
                     2,
                     Scalar.Green,
-                    -1);
-            });
+                    -1);//*/
+            });//*/
             var vec = SolvePnP.Solve(points, image);
+            var rot = new Vector3(
+                (float)Math.Sin(vec[1].x), 
+                (float)Math.Sin(vec[1].y), 
+                (float)Math.Sin(vec[1].z));
             Cv2.Flip(mat, mat, FlipMode.X);
             onCameraFrame.Invoke(mat);
         }
