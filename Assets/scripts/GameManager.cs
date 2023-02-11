@@ -9,11 +9,11 @@ public class GameManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         Application.targetFrameRate = 30;
@@ -23,12 +23,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CameraManager.Init();
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        
     }
 
     private void OnApplicationQuit()
