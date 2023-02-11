@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using DlibDotNet;
 using OpenCvSharp;
@@ -22,7 +21,7 @@ namespace detection
 
         private static readonly Mat ModelPointsMat = new(ModelPoints.Length, 1, MatType.CV_32FC3, ModelPoints);
 
-        public static IEnumerable<Vector3> Solve(DlibDotNet.Point[] points, in Array2D<RgbPixel> image)
+        public static Vector3[] Solve(DlibDotNet.Point[] points, in Array2D<RgbPixel> image)
         {
             var imagePoints = new[]
             {
@@ -55,7 +54,6 @@ namespace detection
             var projMatrixMat = new Mat();
             var posDouble = new double[3];
             var proj = new double[9];
-            Debug.Log($"{rVec.Rows}, {rVec.Height}");
             
             Marshal.Copy(tVec.Data, posDouble, 0, 3);
             Cv2.Rodrigues(rVec, projMatrixMat);
