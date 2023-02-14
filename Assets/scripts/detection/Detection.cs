@@ -10,13 +10,16 @@ namespace detection
 {
     public class Detection : MonoBehaviour
     {
-        [Serializable] private class CameraFrame:UnityEvent<Mat> { }
-        [SerializeField] private CameraFrame onCameraFrame = new();
+        [Serializable] private class DetectParam: UnityEvent<Vec3f, DlibDotNet.Point[]> { }
+        [SerializeField] private DetectParam onDetect = new();
         
         private bool _isRunning;
         
         private static FrontalFaceDetector _faceDetector;
         private static ShapePredictor _shapePredictor;
+
+        private static int _cantFindFrames;
+        private static Rectangle _face = Rectangle.Empty;
         
         private void Start()
         {
@@ -55,12 +58,29 @@ namespace detection
                 (uint)(mat.Width * mat.ElemSize()));
                 
             var faces = _faceDetector.Operator(image);
-                
-            if(faces.Length == 0) return;
-                
+
+            if (faces.Length == 0)
+            {
+                if (_cantFindFrames >= 10)
+                {
+                    return;
+                }
+                if (_face == Rectangle.Empty)
+                {
+                    return;
+                }
+
+                _cantFindFrames++;
+            }
+            else
+            {
+                _face = faces[0];
+                _cantFindFrames = 0;
+            }
+            
             var points = new DlibDotNet.Point[68];
-                
-            var shapes = _shapePredictor.Detect(image, faces[0]);
+
+            var shapes = _shapePredictor.Detect(image, _face);
             Parallel.For(0, 68, i =>
             {
                 points[i] = shapes.GetPart((uint)i);
@@ -70,13 +90,14 @@ namespace detection
                     Scalar.Green,
                     -1);//*/
             });//*/
-            var vec = SolvePnP.Solve(points, image);
-            var rot = new Vector3(
+            var row = image.Rows;
+            var col = image.Columns;
+            var vec = SolvePnP.Solve(points, row, col);
+            var rot = new Vec3f(
                 (float)Math.Sin(vec[1].x), 
                 (float)Math.Sin(vec[1].y), 
                 (float)Math.Sin(vec[1].z));
-            Cv2.Flip(mat, mat, FlipMode.X);
-            onCameraFrame.Invoke(mat);
+            onDetect.Invoke(rot, points);
         }
     }
 }

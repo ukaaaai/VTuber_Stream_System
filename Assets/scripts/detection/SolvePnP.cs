@@ -1,6 +1,5 @@
 using System;
 using System.Runtime.InteropServices;
-using DlibDotNet;
 using OpenCvSharp;
 using UnityEngine;
 
@@ -21,7 +20,7 @@ namespace detection
 
         private static readonly Mat ModelPointsMat = new(ModelPoints.Length, 1, MatType.CV_32FC3, ModelPoints);
 
-        public static Vector3[] Solve(DlibDotNet.Point[] points, in Array2D<RgbPixel> image)
+        public static Vector3[] Solve(DlibDotNet.Point[] points, int row, int col)
         {
             var imagePoints = new[]
             {
@@ -37,9 +36,8 @@ namespace detection
             
             var imagePointsMat = new Mat(imagePoints.Length, 1, MatType.CV_32FC2, imagePoints);
             var distCoeffs = new Mat(4, 1, MatType.CV_64FC1, 0);
-            var focalLength = image.Columns;
-            var center = new Point2d(image.Columns / 2.0, image.Rows / 2.0);
-            var cameraMatrix = new[,]{{focalLength, 0, center.X}, {0, focalLength, center.Y}, {0, 0, 1}};
+            var center = new Point2d(col / 2.0, row / 2.0);
+            var cameraMatrix = new[,]{{col, 0, center.X}, {0, col, center.Y}, {0, 0, 1}};
             var cameraMatrixMat = new Mat(3, 3, MatType.CV_64FC1, cameraMatrix);
             
             var rVec = new Mat();
