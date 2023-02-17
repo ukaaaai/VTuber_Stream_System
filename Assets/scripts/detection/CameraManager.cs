@@ -1,4 +1,5 @@
-﻿using OpenCvSharp;
+﻿using System;
+using OpenCvSharp;
 using UnityEngine;
 
 namespace detection
@@ -27,6 +28,7 @@ namespace detection
         {
             var devices = WebCamTexture.devices;
             _currentDevice = devices[0].name;
+            _webCamTexture = new WebCamTexture();
         }
         
         public static void Refresh ()
@@ -41,13 +43,23 @@ namespace detection
                 return;
             
             if(_webCamTexture != null) _webCamTexture.Stop();
+            
+            try
+            {
+                _webCamTexture = new WebCamTexture(device, Width, Height, 30);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            
             _currentDevice = device;
-            _webCamTexture = new WebCamTexture(device, Width, Height, 30);
             _webCamTexture.Play();
         }
         
         public void GetFrame(out Mat mat)
         {
+            
             if (!_webCamTexture.isPlaying)
             {
                 _webCamTexture = new WebCamTexture(_currentDevice, Width, Height, 30);

@@ -1,3 +1,4 @@
+using System;
 using detection;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,12 +20,20 @@ namespace UI
         public void Start()
         {
             CameraManager.Instance.CameraOpen(dropdown.options[0].text);
-            dropdown.value = 0;
+            dropdown.Select();
         }
         
         public void OnButtonClicked()
         {
-            CameraManager.Instance.CameraOpen(dropdown.options[dropdown.value].text);
+            try
+            {
+                CameraManager.Instance.CameraOpen(dropdown.options[dropdown.value].text);
+            }
+            catch (Exception)
+            {
+                dropdown.value = 0;
+                CameraManager.Instance.CameraOpen(dropdown.options[0].text);
+            }
         }
     }
 }
