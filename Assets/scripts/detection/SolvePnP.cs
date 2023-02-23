@@ -20,7 +20,7 @@ namespace detection
 
         private static readonly Mat ModelPointsMat = new(ModelPoints.Length, 1, MatType.CV_32FC3, ModelPoints);
 
-        public static Vector3[] Solve(DlibDotNet.Point[] points, int row, int col)
+        public static Vector3[] Solve(in DlibDotNet.Point[] points, int row, int col)
         {
             var imagePoints = new[]
             {
