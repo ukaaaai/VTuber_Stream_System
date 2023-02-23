@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class DeviceSelect : MonoBehaviour
+    public sealed class DeviceSelect : MonoBehaviour
     {
         [SerializeField] private Dropdown dropdown;
 

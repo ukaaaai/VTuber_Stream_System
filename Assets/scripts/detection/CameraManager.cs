@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace detection
 {
-    public class CameraManager
+    public sealed class CameraManager
     {
         private readonly int _maxDevices;
 
@@ -74,6 +74,7 @@ namespace detection
                 mat, 
                 new Size(Width, Height));
             Cv2.CvtColor(mat, mat, ColorConversionCodes.RGBA2BGR);
+            Cv2.Flip(mat, mat, FlipMode.X);
         }
 
         private void Stop()

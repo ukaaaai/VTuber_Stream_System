@@ -8,8 +8,10 @@ using UnityEngine.Events;
 
 namespace detection
 {
-    public class Detection : MonoBehaviour
+    public sealed class Detection : MonoBehaviour
     {
+        [Serializable] private class DetectPreview: UnityEvent<Mat> { }
+        [SerializeField] private DetectPreview onPreview = new();
         [Serializable] private class DetectParam: UnityEvent<Vec3f, DlibDotNet.Point[]> { }
         [SerializeField] private DetectParam onDetect = new();
         
@@ -46,7 +48,6 @@ namespace detection
         {
             if(!_isRunning) return;
             CameraManager.Instance.GetFrame(out var mat);
-            Cv2.Flip(mat, mat, FlipMode.X);
             var width = mat.Width;
             var height = mat.Height;
             var array = new byte[width * height * mat.ElemSize()];
@@ -84,7 +85,7 @@ namespace detection
             Parallel.For(0, 68, i =>
             {
                 points[i] = shapes.GetPart((uint)i);
-                /*Cv2.Circle(mat,
+                Cv2.Circle(mat,
                     new OpenCvSharp.Point(points[i].X, points[i].Y),
                     2,
                     Scalar.Green,
@@ -97,7 +98,9 @@ namespace detection
                 (float)Math.Sin(vec[1].x), 
                 (float)Math.Sin(vec[1].y), 
                 (float)Math.Sin(vec[1].z));
+            Cv2.Flip(mat, mat, FlipMode.X);
             onDetect.Invoke(rot, points);
+            onPreview.Invoke(mat); 
         }
     }
 }

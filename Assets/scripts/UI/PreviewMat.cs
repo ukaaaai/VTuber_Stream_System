@@ -5,7 +5,7 @@ using OpenCvSharp;
 
 namespace UI
 {
-    public class PreviewMat : MonoBehaviour
+    public sealed class PreviewMat : MonoBehaviour
     {
         [SerializeField] private RawImage rawImage;
         
