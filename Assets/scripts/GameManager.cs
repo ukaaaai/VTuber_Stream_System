@@ -1,7 +1,7 @@
 using detection;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public sealed class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
 
@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(gameObject);
+            Setting.AuthManager.Instance.Login();
         }
         else
         {
@@ -19,7 +20,6 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 30;
     }
 
-    // Start is called before the first frame update
     private void Start()
     {
         CameraManager.Init();
@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        Setting.AuthManager.Instance.Logout();
         CameraManager.Release();
     }
 }
