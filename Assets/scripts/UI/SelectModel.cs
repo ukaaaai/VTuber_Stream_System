@@ -1,18 +1,22 @@
+using System;
 using SFB;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UI
 {
     public sealed class SelectModel: MonoBehaviour
     {
-        public string SelectFile()
+        [Serializable] private class SelectEvent: UnityEvent<string> {}
+        [SerializeField] private SelectEvent onSelect;
+        public void SelectFile()
         {
             var paths = StandaloneFileBrowser.OpenFilePanel(
                 "select model", 
                 "", 
-                new []{ new ExtensionFilter("zip", "zip")},
+                new []{ new ExtensionFilter("json", "json")},
                 false);
-            return paths.Length == 0 ? string.Empty : paths[0];
+            onSelect.Invoke(paths.Length == 0 ? string.Empty : paths[0]);
         }
     }
 }
