@@ -12,14 +12,12 @@ namespace Live2Dmodel
         private string _modelPath;
         private CubismModel _model;
 
-        public void SetPath(string path)
-        {
-            _modelPath = path;
-        }
+        public void SetPath(string path) => _modelPath = path;
         
         public void LoadModel()
         {
-            Destroy(_model);
+            if(_model != null) Destroy(_model.gameObject);
+            _model = null;
             var model3Json = CubismModel3Json.LoadAtPath(_modelPath, LoadAsset);
             
             _model = model3Json.ToModel();
@@ -49,11 +47,9 @@ namespace Live2Dmodel
 
             if (assetType != typeof(Texture2D)) throw new NotSupportedException();
             var texture = new Texture2D(1, 1);
-
-
+            
             texture.LoadImage(File.ReadAllBytes(absolutePath));
-
-
+            
             return texture;
         }
     }
