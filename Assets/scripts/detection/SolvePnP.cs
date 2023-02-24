@@ -20,7 +20,7 @@ namespace detection
 
         private static readonly Mat ModelPointsMat = new(ModelPoints.Length, 1, MatType.CV_32FC3, ModelPoints);
 
-        public static Vector3[] Solve(in DlibDotNet.Point[] points, int row, int col)
+        public static Vector3[] Solve(in DlibDotNet.Point[] points, in int row, in int col)
         {
             var imagePoints = new[]
             {
@@ -50,20 +50,20 @@ namespace detection
                 tVec);
             
             var projMatrixMat = new Mat();
-            var posDouble = new double[3];
-            var proj = new double[9];
+            var posDouble = new float[3];
+            var proj = new float[9];
             
             Marshal.Copy(tVec.Data, posDouble, 0, 3);
             Cv2.Rodrigues(rVec, projMatrixMat);
             Marshal.Copy(projMatrixMat.Data, proj, 0, 9);
 
-            var objPosition = new Vector3((float)posDouble[0], (float)posDouble[1], (float)posDouble[2]);
+            var objPosition = new Vector3(posDouble[0], posDouble[1], posDouble[2]);
             var objRotation = RotMatToQuaternion(proj).eulerAngles;
             
             return new[] {objPosition, objRotation};
         }
 
-        private static Quaternion RotMatToQuaternion(in double[] projmat)
+        private static Quaternion RotMatToQuaternion(in float[] projmat)
         {
             var quaternion = new Quaternion();
             var elem = new double[4];
@@ -89,29 +89,29 @@ namespace detection
             {
                 case 0:
                     quaternion.x = v;
-                    quaternion.y = (float)(projmat[1] + projmat[3]) * mult;
-                    quaternion.z = (float)(projmat[2] + projmat[6]) * mult;
-                    quaternion.w = (float)(projmat[5] - projmat[7]) * mult;
+                    quaternion.y = (projmat[1] + projmat[3]) * mult;
+                    quaternion.z = (projmat[2] + projmat[6]) * mult;
+                    quaternion.w = (projmat[5] - projmat[7]) * mult;
                     break;
                 
                 case 1:
-                    quaternion.x = (float)(projmat[1] + projmat[3]) * mult;
+                    quaternion.x = (projmat[1] + projmat[3]) * mult;
                     quaternion.y = v;
-                    quaternion.z = (float)(projmat[5] + projmat[7]) * mult;
-                    quaternion.w = (float)(projmat[6] - projmat[2]) * mult;
+                    quaternion.z = (projmat[5] + projmat[7]) * mult;
+                    quaternion.w = (projmat[6] - projmat[2]) * mult;
                     break;
                 
                 case 2:
-                    quaternion.x = (float)(projmat[2] + projmat[6]) * mult;
-                    quaternion.y = (float)(projmat[5] + projmat[7]) * mult;
+                    quaternion.x = (projmat[2] + projmat[6]) * mult;
+                    quaternion.y = (projmat[5] + projmat[7]) * mult;
                     quaternion.z = v;
-                    quaternion.w = (float)(projmat[1] - projmat[3]) * mult;
+                    quaternion.w = (projmat[1] - projmat[3]) * mult;
                     break;
                 
                 case 3:
-                    quaternion.x = (float)(projmat[5] - projmat[7]) * mult;
-                    quaternion.y = (float)(projmat[6] - projmat[2]) * mult;
-                    quaternion.z = (float)(projmat[1] - projmat[3]) * mult;
+                    quaternion.x = (projmat[5] - projmat[7]) * mult;
+                    quaternion.y = (projmat[6] - projmat[2]) * mult;
+                    quaternion.z = (projmat[1] - projmat[3]) * mult;
                     quaternion.w = v;
                     break;
             }
