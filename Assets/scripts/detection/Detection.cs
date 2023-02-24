@@ -10,8 +10,6 @@ namespace detection
 {
     public sealed class Detection : MonoBehaviour
     {
-        [Serializable] private class DetectPreview: UnityEvent<Mat> { }
-        [SerializeField] private DetectPreview onPreview = new();
         [Serializable] private class DetectParam: UnityEvent<Vec3f, DlibDotNet.Point[]> { }
         [SerializeField] private DetectParam onDetect = new();
         
@@ -34,29 +32,26 @@ namespace detection
             GetLandmarks();
         }
         
-        public void StartDetection()
-        {
-            _isRunning = true;
-        }
+        public void StartDetection() => _isRunning = true;
         
-        public void StopDetection()
-        {
-            _isRunning = false;
-        }
+        public void StopDetection() => _isRunning = false;
 
         public void GetLandmarks()
         {
             if(!_isRunning) return;
             CameraManager.Instance.GetFrame(out var mat);
+            
             var width = mat.Width;
             var height = mat.Height;
-            var array = new byte[width * height * mat.ElemSize()];
+            var elemSize = mat.ElemSize();
+            
+            var array = new byte[width * height * elemSize];
             Marshal.Copy(mat.Data, array, 0, array.Length);
             var image = Dlib.LoadImageData<RgbPixel>(
                 array,
-                (uint)mat.Height, 
-                (uint)mat.Width,
-                (uint)(mat.Width * mat.ElemSize()));
+                (uint)height, 
+                (uint)width,
+                (uint)(width * elemSize));
                 
             var faces = _faceDetector.Operator(image);
 
@@ -98,9 +93,7 @@ namespace detection
                 (float)Math.Sin(vec[1].x), 
                 (float)Math.Sin(vec[1].y), 
                 (float)Math.Sin(vec[1].z));
-            Cv2.Flip(mat, mat, FlipMode.X);
             onDetect.Invoke(rot, points);
-            onPreview.Invoke(mat); 
         }
     }
 }
