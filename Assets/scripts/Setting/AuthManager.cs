@@ -16,8 +16,8 @@ namespace Setting
         }
 
         private FirebaseUser _user;
-        public string DisplayName = string.Empty;
-        public string UserID = string.Empty;
+        public string DisplayName => _user.DisplayName;
+        public string UserID => _user.UserId;
         
         public void Login()
         {
