@@ -1,16 +1,18 @@
 using System;
+using System.Linq;
 using OpenCvSharp;
 using DlibDotNet;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
+using Point = DlibDotNet.Point;
 
 namespace detection
 {
     public sealed class Detection : MonoBehaviour
     {
-        [Serializable] private class DetectParam: UnityEvent<Vec3f, DlibDotNet.Point[]> { }
+        [Serializable] private class DetectParam: UnityEvent<Vec3f, Point[]> { }
         [SerializeField] private DetectParam onDetect = new();
         
         private bool _isRunning;
@@ -74,7 +76,7 @@ namespace detection
                 _cantFindFrames = 0;
             }
             
-            var points = new DlibDotNet.Point[68];
+            var points = new Point[68];
 
             var shapes = _shapePredictor.Detect(image, _face);
             Parallel.For(0, 68, i =>
@@ -93,6 +95,10 @@ namespace detection
                 (float)Math.Sin(vec[1].x), 
                 (float)Math.Sin(vec[1].y), 
                 (float)Math.Sin(vec[1].z));
+            
+            var eyeRatio = CoordinateParser.GetEyeRatio(points);
+            var pupils = CoordinateParser.GetPupil(points, mat, eyeRatio.ToArray());
+            
             onDetect.Invoke(rot, points);
         }
     }
