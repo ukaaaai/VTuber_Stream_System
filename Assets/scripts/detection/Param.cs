@@ -2,59 +2,39 @@ namespace detection
 {
     public struct Param
     {
-        public sbyte ParamAngleX;
-        public sbyte ParamAngleY;
-        public sbyte ParamAngleZ;
-        public sbyte ParamEyeLOpen;
-        public sbyte ParamEyeLSmile;
-        public sbyte ParamEyeROpen;
-        public sbyte ParamEyeRSmile;
-        public sbyte ParamEyeBallX;
-        public sbyte ParamEyeBallY;
-        public sbyte ParamBrowLY;
-        public sbyte ParamBrowRY;
-        public sbyte ParamBrowLX;
-        public sbyte ParamBrowRX;
-        public sbyte ParamBrowLAngle;
-        public sbyte ParamBrowRAngle;
-        public sbyte ParamBrowLForm;
-        public sbyte ParamBrowRForm;
-        public sbyte ParamMouthForm;
-        public sbyte ParamMouthOpenY;
-        public sbyte ParamCheek;
-        public sbyte ParamBodyAngleX;
-        public sbyte ParamBodyAngleY;
-        public sbyte ParamBodyAngleZ;
-        public sbyte ParamBreath;
+        public float ParamAngleX;
+        public float ParamAngleY;
+        public float ParamAngleZ;
+        public float ParamEyeLOpen;
+        public float ParamEyeROpen;
+        public float ParamEyeBallX;
+        public float ParamEyeBallY;
+        public float ParamBrowLY;
+        public float ParamBrowRY;
+        public float ParamMouthForm;
+        public float ParamMouthOpenY;
+        public float ParamCheek;
+        public float ParamBreath;
+        private const int Offset = 128;
+        private const int AdjRate = 127;
 
         public byte[] ToDataArray()
         {
             var data = new[]
             {
-                (byte)ParamAngleX,
-                (byte)ParamAngleY,
-                (byte)ParamAngleZ,
-                (byte)ParamEyeLOpen,
-                (byte)ParamEyeLSmile,
-                (byte)ParamEyeROpen,
-                (byte)ParamEyeRSmile,
-                (byte)ParamEyeBallX,
-                (byte)ParamEyeBallY,
-                (byte)ParamBrowLY,
-                (byte)ParamBrowRY,
-                (byte)ParamBrowLX,
-                (byte)ParamBrowRX,
-                (byte)ParamBrowLAngle,
-                (byte)ParamBrowRAngle,
-                (byte)ParamBrowLForm,
-                (byte)ParamBrowRForm,
-                (byte)ParamMouthForm,
-                (byte)ParamMouthOpenY,
-                (byte)ParamCheek,
-                (byte)ParamBodyAngleX,
-                (byte)ParamBodyAngleY,
-                (byte)ParamBodyAngleZ,
-                (byte)ParamBreath
+                (byte)((int)ParamAngleX * AdjRate / 30 + Offset),
+                (byte)((int)ParamAngleY * AdjRate / 30 + Offset),
+                (byte)((int)ParamAngleZ * AdjRate / 30 + Offset),
+                (byte)((int)ParamEyeLOpen * AdjRate),
+                (byte)((int)ParamEyeROpen * AdjRate),
+                (byte)((int)ParamEyeBallX * AdjRate + Offset),
+                (byte)((int)ParamEyeBallY * AdjRate + Offset),
+                (byte)((int)ParamBrowLY * AdjRate + Offset),
+                (byte)((int)ParamBrowRY * AdjRate + Offset),
+                (byte)((int)ParamMouthForm * AdjRate + Offset),
+                (byte)((int)ParamMouthOpenY * AdjRate),
+                (byte)((int)ParamCheek * AdjRate),
+                (byte)((int)ParamBreath * AdjRate)
             };
             return data;
         }
@@ -67,30 +47,19 @@ namespace detection
             }
             var param = new Param
             {
-                ParamAngleX = (sbyte)data[0],
-                ParamAngleY = (sbyte)data[1],
-                ParamAngleZ = (sbyte)data[2],
-                ParamEyeLOpen = (sbyte)data[3],
-                ParamEyeLSmile = (sbyte)data[4],
-                ParamEyeROpen = (sbyte)data[5],
-                ParamEyeRSmile = (sbyte)data[6],
-                ParamEyeBallX = (sbyte)data[7],
-                ParamEyeBallY = (sbyte)data[8],
-                ParamBrowLY = (sbyte)data[9],
-                ParamBrowRY = (sbyte)data[10],
-                ParamBrowLX = (sbyte)data[11],
-                ParamBrowRX = (sbyte)data[12],
-                ParamBrowLAngle = (sbyte)data[13],
-                ParamBrowRAngle = (sbyte)data[14],
-                ParamBrowLForm = (sbyte)data[15],
-                ParamBrowRForm = (sbyte)data[16],
-                ParamMouthForm = (sbyte)data[17],
-                ParamMouthOpenY = (sbyte)data[18],
-                ParamCheek = (sbyte)data[19],
-                ParamBodyAngleX = (sbyte)data[20],
-                ParamBodyAngleY = (sbyte)data[21],
-                ParamBodyAngleZ = (sbyte)data[22],
-                ParamBreath = (sbyte)data[23]
+                ParamAngleX = data[0] * 30 / AdjRate - Offset,
+                ParamAngleY = data[1] * 30 / AdjRate - Offset,
+                ParamAngleZ = data[2] * 30 / AdjRate - Offset,
+                ParamEyeLOpen = data[3] / (float)AdjRate,
+                ParamEyeROpen = data[4] / (float)AdjRate,
+                ParamEyeBallX = data[5] / (float)AdjRate - Offset,
+                ParamEyeBallY = data[6] / (float)AdjRate - Offset,
+                ParamBrowLY = data[7] / (float)AdjRate - Offset,
+                ParamBrowRY = data[8] / (float)AdjRate - Offset,
+                ParamMouthForm = data[9] / (float)AdjRate - Offset,
+                ParamMouthOpenY = data[10] / (float)AdjRate,
+                ParamCheek = data[11] / (float)AdjRate,
+                ParamBreath = data[12] / (float)AdjRate
             };
             return param;
         }
