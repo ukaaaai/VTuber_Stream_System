@@ -31,14 +31,14 @@ namespace detection
         private void Update()
         {
             if (!_isRunning) return;
-            GetLandmarks();
+            Detect();
         }
         
         public void StartDetection() => _isRunning = true;
         
         public void StopDetection() => _isRunning = false;
 
-        public void GetLandmarks()
+        public void Detect()
         {
             if(!_isRunning) return;
             CameraManager.Instance.GetFrame(out var mat);
@@ -95,9 +95,6 @@ namespace detection
                 (float)Math.Sin(vec[1].x), 
                 (float)Math.Sin(vec[1].y), 
                 (float)Math.Sin(vec[1].z));
-            
-            var eyeRatio = CoordinateParser.GetEyeRatio(points);
-            var pupils = CoordinateParser.GetPupil(points, mat, eyeRatio.ToArray());
             
             onDetect.Invoke(rot, points);
         }
