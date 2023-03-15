@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace detection
 {
     public struct Param
@@ -62,6 +64,11 @@ namespace detection
                 ParamBreath = data[12] / (float)AdjRate
             };
             return param;
+        }
+        
+        public string ToJson()
+        {
+            return JsonUtility.ToJson(this);
         }
     }
 }
