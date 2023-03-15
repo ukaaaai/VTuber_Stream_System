@@ -1,6 +1,4 @@
 using System;
-using System.Linq;
-using OpenCvSharp;
 using DlibDotNet;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -12,7 +10,7 @@ namespace detection
 {
     public sealed class Detection : MonoBehaviour
     {
-        [Serializable] private class DetectParam: UnityEvent<Vec3f, Point[]> { }
+        [Serializable] private class DetectParam: UnityEvent<Param> { }
         [SerializeField] private DetectParam onDetect = new();
         
         private bool _isRunning;
@@ -82,21 +80,14 @@ namespace detection
             Parallel.For(0, 68, i =>
             {
                 points[i] = shapes.GetPart((uint)i);
-                Cv2.Circle(mat,
+                /*Cv2.Circle(mat,
                     new OpenCvSharp.Point(points[i].X, points[i].Y),
                     2,
                     Scalar.Green,
                     -1);//*/
-            });//*/
-            var row = image.Rows;
-            var col = image.Columns;
-            var vec = SolvePnP.Solve(points, row, col);
-            var rot = new Vec3f(
-                (float)Math.Sin(vec[1].x), 
-                (float)Math.Sin(vec[1].y), 
-                (float)Math.Sin(vec[1].z));
-            
-            onDetect.Invoke(rot, points);
+            });
+            var param = CoordinateParser.Parse(points, image, mat);
+            onDetect.Invoke(param);
         }
     }
 }

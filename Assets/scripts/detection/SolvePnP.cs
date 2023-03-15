@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using OpenCvSharp;
 using UnityEngine;
@@ -49,7 +50,10 @@ namespace detection
                 rVec, 
                 tVec);
             
+            Cv2.Rodrigues(rVec, rVec);
+            
             var projMatrixMat = new Mat();
+            Debug.Log("height" + rVec.Height + " width" + rVec.Width + " x" + rVec.At<float>(0) + " y" + rVec.At<float>(1) + " z:" + rVec.At<float>(2));
             var posDouble = new float[3];
             var proj = new float[9];
             
@@ -57,13 +61,33 @@ namespace detection
             Cv2.Rodrigues(rVec, projMatrixMat);
             Marshal.Copy(projMatrixMat.Data, proj, 0, 9);
 
-            var objPosition = new Vector3(posDouble[0], posDouble[1], posDouble[2]);
-            var objRotation = RotMatToQuaternion(proj).eulerAngles;
+            IEnumerable<Mat> projMat = new[] { projMatrixMat.Clone(), tVec.Clone() };
+            Cv2.HConcat(projMat, projMatrixMat);
+
+            Cv2.DecomposeProjectionMatrix(projMatrixMat, cameraMatrixMat, rVec, tVec);
+
+            Cv2.Rodrigues(rVec, rVec);
+            var rotVecs = new Vector3[]
+            {
+                new() { x = rVec.At<float>(0, 0), y = rVec.At<float>(1, 0), z = rVec.At<float>(2, 0) },
+                new() { x = rVec.At<float>(0, 1), y = rVec.At<float>(1, 1), z = rVec.At<float>(2, 1) },
+                new() { x = rVec.At<float>(0, 2), y = rVec.At<float>(1, 2), z = rVec.At<float>(2, 2) }
+            };
             
+            var objRotation = new Vector3(rotVecs[0].x, rotVecs[1].y, rotVecs[2].z);
+
+
+            var objPosition = new Vector3(posDouble[0], posDouble[1], posDouble[2]);
+            
+            /*var roll = (float)Math.Atan2(proj[5], proj[8]);
+            var pitch = (float)Math.Asin(proj[2]);
+            var yaw = (float)Math.Atan2(proj[1], proj[0]);
+            var objRotation = new Vector3(roll, pitch, yaw);//*/
+
             return new[] {objPosition, objRotation};
         }
 
-        private static Quaternion RotMatToQuaternion(in float[] projmat)
+        private static Vector3 RotMatToEulerAngles(in float[] projmat)
         {
             var quaternion = new Quaternion();
             var elem = new double[4];
@@ -80,7 +104,7 @@ namespace detection
             }
             
             if(elem[biggestIndex] < 0.0f)
-                return quaternion;
+                return quaternion.normalized.eulerAngles;
             
             var v = (float)Math.Sqrt(elem[biggestIndex]) * 0.5f;
             var mult = 0.25f / v;
@@ -116,7 +140,7 @@ namespace detection
                     break;
             }
             
-            return quaternion;
+            return quaternion.normalized.eulerAngles;
         }
     }
 }
