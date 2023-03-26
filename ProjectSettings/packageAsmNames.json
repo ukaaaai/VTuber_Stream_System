@@ -1,6 +1,12 @@
 {
     "managedList": [
         {
+            "packageName": "System.Runtime.CompilerServices.Unsafe",
+            "fileNames": [
+                "System.Runtime.CompilerServices.Unsafe"
+            ]
+        },
+        {
             "packageName": "DlibDotNet",
             "fileNames": [
                 "DlibDotNet"
@@ -19,12 +25,6 @@
         {
             "packageName": "OpenCvSharp4.runtime.win",
             "fileNames": []
-        },
-        {
-            "packageName": "System.Runtime.CompilerServices.Unsafe",
-            "fileNames": [
-                "System.Runtime.CompilerServices.Unsafe"
-            ]
         },
         {
             "packageName": "FaceRecognitionDotNet",
