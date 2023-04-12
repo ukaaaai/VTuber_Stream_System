@@ -60,6 +60,8 @@ crashlytics-build.properties
 Assets/Nuget Importer
 /Assets/TextMesh Pro
 
+UserSettings/*
+
 /Assets/Firebase/*
 /Assets/Editor*/Firebase*
 Firebase*
