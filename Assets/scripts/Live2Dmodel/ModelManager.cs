@@ -51,7 +51,7 @@ namespace Live2Dmodel
 
         public void SetPath(string path) => _modelPath = path;
         
-        unsafe public void LoadModel()
+        public void LoadModel()
         {
             if(_model != null) Destroy(_model.gameObject);
             _model = null;
