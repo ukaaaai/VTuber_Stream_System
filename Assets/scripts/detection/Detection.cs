@@ -36,7 +36,7 @@ namespace detection
         
         public void StopDetection() => _isRunning = false;
 
-        public void Detect()
+        private void Detect()
         {
             if(!_isRunning) return;
             CameraManager.Instance.GetFrame(out var mat);
@@ -80,11 +80,6 @@ namespace detection
             Parallel.For(0, 68, i =>
             {
                 points[i] = shapes.GetPart((uint)i);
-                /*Cv2.Circle(mat,
-                    new OpenCvSharp.Point(points[i].X, points[i].Y),
-                    2,
-                    Scalar.Green,
-                    -1);//*/
             });
             var param = CoordinateParser.Parse(points, image, mat);
             onDetect.Invoke(param);

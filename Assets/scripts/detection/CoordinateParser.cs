@@ -5,7 +5,6 @@ using System.Numerics;
 using DlibDotNet;
 using Live2Dmodel;
 using OpenCvSharp;
-using UnityEngine;
 using Point = DlibDotNet.Point;
 using Rect = OpenCvSharp.Rect;
 
@@ -26,11 +25,7 @@ namespace detection
             
             var row = image.Rows;
             var col = image.Columns;
-            var vec = SolvePnP.Solve(landmarkPoints, row, col);
-            var rot = vec[1];/*new Vector3(
-                (float)Math.Sin(vec[1].x), 
-                (float)Math.Sin(vec[1].y), 
-                (float)Math.Sin(vec[1].z));//*/
+            var rot = SolvePnP.Solve(landmarkPoints, row, col);
 
             return new Param()
             {
@@ -70,16 +65,16 @@ namespace detection
         {
             var compPoints = PointToComp(points);
             
-            var left1 = compPoints[39] - compPoints[37];
-            var left2 = compPoints[41] - compPoints[37];
-            var left3 = compPoints[38] - compPoints[40];
-            var left4 = compPoints[42] - compPoints[40];
+            var left1 = compPoints[38] - compPoints[36];
+            var left2 = compPoints[40] - compPoints[36];
+            var left3 = compPoints[37] - compPoints[39];
+            var left4 = compPoints[41] - compPoints[39];
             var leftRatio = (float)Math.Sin(Math.Abs(left1.Phase - left2.Phase) + Math.Abs(left3.Phase - left4.Phase) / 2);
             
-            var right1 = compPoints[45] - compPoints[43];
-            var right2 = compPoints[47] - compPoints[43];
-            var right3 = compPoints[44] - compPoints[46];
-            var right4 = compPoints[48] - compPoints[46];
+            var right1 = compPoints[44] - compPoints[42];
+            var right2 = compPoints[46] - compPoints[42];
+            var right3 = compPoints[43] - compPoints[45];
+            var right4 = compPoints[47] - compPoints[45];
             var rightRatio = (float)Math.Sin(Math.Abs(right1.Phase - right2.Phase) + Math.Abs(right3.Phase - right4.Phase) / 2);
 
             _defaultEyeRatio = Math.Min(Math.Max(_defaultEyeRatio, Math.Max(leftRatio * 0.8f, rightRatio * 0.8f)), 1.0f);
@@ -97,7 +92,7 @@ namespace detection
             
             if (eyeRatio[0] > 0.3f)
             {
-                var rect = MakeRect(points[37 .. 42]);
+                var rect = MakeRect(points[36 .. 41]);
                 var eye = image.SubMat(rect);
                 Cv2.CvtColor(eye, eye, ColorConversionCodes.BGR2GRAY);
                 Cv2.BitwiseNot(eye.Threshold(0, 255, ThresholdTypes.Otsu), eye);
@@ -111,9 +106,10 @@ namespace detection
             if (!(eyeRatio[1] > 0.3f))
                 return new Point(Math.Max(pupils[0].X, pupils[1].X), Math.Max(pupils[0].Y, pupils[1].Y));
             {
-                var rect = MakeRect(points[43 .. 48]);
+                var rect = MakeRect(points[42 .. 47]);
                 var eye = image.SubMat(rect);
-                Cv2.BitwiseNot(eye.Threshold(0, 255, ThresholdTypes.Otsu), eye);
+                eye = eye.Threshold(0, 255, ThresholdTypes.Otsu);
+                Cv2.BitwiseNot(eye, eye);
                 var moments = eye.Moments(true);
                 var x = (int)(moments.M10 / moments.M00);
                 var y = (int)(moments.M01 / moments.M00);
@@ -129,10 +125,10 @@ namespace detection
             return new[]
             {
                 (float)Math.Clamp(
-                    DefaultBlowRatio - (points[18] - points[31]).Magnitude / (points[37] - points[31]).Magnitude,
+                    DefaultBlowRatio - (points[17] - points[30]).Magnitude / (points[36] - points[30]).Magnitude,
                     -1, 1),
                 (float)Math.Clamp(
-                    DefaultBlowRatio - (points[27] - points[31]).Magnitude / (points[46] - points[31]).Magnitude,
+                    DefaultBlowRatio - (points[26] - points[30]).Magnitude / (points[45] - points[30]).Magnitude,
                     -1, 1)
             };
         }
@@ -141,21 +137,9 @@ namespace detection
         {
             return new[]
             {
-                (float)Math.Clamp((points[63].Imaginary - points[31].Imaginary) / (points[67].Imaginary- points[63].Imaginary), -1, 1),
-                (float)Math.Clamp((points[55].Real - points[49].Real) / (points[36].Real - points[32].Real) - 1, 0, 1)
+                (float)Math.Clamp((points[62].Imaginary - points[30].Imaginary) / (points[66].Imaginary- points[62].Imaginary), -1, 1),
+                (float)Math.Clamp((points[54].Real - points[48].Real) / (points[35].Real - points[31].Real) - 1, 0, 1)
             };
-        }
-
-        private static IEnumerable<float> GetAngles(in Complex[] points)
-        {
-            ref var nose = ref points[34];
-
-            var left = (float)((points[1].Real + points[3].Real) / 2 - nose.Real);
-            var right = (float)((points[15].Real + points[17].Real) / 2 - nose.Real);
-            var angleX = Math.Clamp((left < right ? -(float)Math.Asin(left / right) : (float)Math.Asin(right / left))
-                                    * Mathf.Rad2Deg, -30, 30);
-
-            return new float[]{};
         }
     }
 }
