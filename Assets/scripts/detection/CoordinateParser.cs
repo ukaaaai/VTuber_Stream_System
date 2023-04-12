@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using DlibDotNet;
-using Live2Dmodel;
 using OpenCvSharp;
-using Point = DlibDotNet.Point;
-using Rect = OpenCvSharp.Rect;
+using Point = OpenCvSharp.Point;
 
 namespace detection
 {
@@ -15,23 +13,19 @@ namespace detection
         private static float _defaultEyeRatio = 0.3f;
         private const float DefaultBlowRatio = 1.5f;
 
-        public static Param Parse(in Point[] landmarkPoints, in Array2D<RgbPixel> image, in Mat mat)
+        public static Param Parse(in Complex[] landmarkPoints, in Array2D<RgbPixel> image, in Mat mat)
         {
-            var points = PointToComp(landmarkPoints);
             var eyeRatio = GetEyeRatio(landmarkPoints).ToArray();
             var pupil = GetPupil(landmarkPoints, mat, eyeRatio);
-            var blow = GetBlow(points).ToArray();
-            var mouth = GetMouth(points).ToArray();
-            
-            var row = image.Rows;
-            var col = image.Columns;
-            var rot = SolvePnP.Solve(landmarkPoints, row, col);
+            var blow = GetBlow(landmarkPoints).ToArray();
+            var mouth = GetMouth(landmarkPoints).ToArray();
+            var rot = SolvePnP.Solve(landmarkPoints, image.Rows, image.Columns);
 
             return new Param()
             {
-                ParamAngleX = rot.x,
-                ParamAngleY = rot.y,
-                ParamAngleZ = rot.z,
+                ParamAngleX = rot.X,
+                ParamAngleY = rot.Y,
+                ParamAngleZ = rot.Z,
                 ParamEyeLOpen = eyeRatio[0],
                 ParamEyeROpen = eyeRatio[1],
                 ParamEyeBallX = pupil.X,
@@ -41,40 +35,33 @@ namespace detection
                 ParamMouthForm = mouth[1],
                 ParamMouthOpenY = mouth[0],
                 ParamCheek = 0,
-                ParamBreath = ModelManager.ParamBreath
+                ParamBreath = Live2Dmodel.ModelManager.ParamBreath
             };
         }
-        
-        private static Complex[] PointToComp(in Point[] points)
-        {
-            return points.Select(t => new Complex(t.X, t.Y)).ToArray();
-        }
 
-        private static Rect MakeRect(IEnumerable<Point> points)
+        private static Rect MakeRect(IEnumerable<Complex> points)
         {
-            var enumerable = points as Point[] ?? points.ToArray();
-            var left = enumerable.Min(t => t.X);
-            var top = enumerable.Min(t => t.Y);
-            var width = enumerable.Max(t => t.X) - left;
-            var height = enumerable.Max(t => t.Y) - top;
+            var enumerable = points as Complex[] ?? points.ToArray();
+            var left = (int)enumerable.Min(t => t.Real);
+            var top = (int)enumerable.Min(t => t.Imaginary);
+            var width = (int)enumerable.Max(t => t.Real) - left;
+            var height = (int)enumerable.Max(t => t.Imaginary) - top;
 
             return new Rect(left, top, width, height);
         }
 
-        private static IEnumerable<float> GetEyeRatio(in Point[] points)
+        private static IEnumerable<float> GetEyeRatio(in Complex[] points)
         {
-            var compPoints = PointToComp(points);
-            
-            var left1 = compPoints[38] - compPoints[36];
-            var left2 = compPoints[40] - compPoints[36];
-            var left3 = compPoints[37] - compPoints[39];
-            var left4 = compPoints[41] - compPoints[39];
+            var left1 = points[38] - points[36];
+            var left2 = points[40] - points[36];
+            var left3 = points[37] - points[39];
+            var left4 = points[41] - points[39];
             var leftRatio = (float)Math.Sin(Math.Abs(left1.Phase - left2.Phase) + Math.Abs(left3.Phase - left4.Phase) / 2);
             
-            var right1 = compPoints[44] - compPoints[42];
-            var right2 = compPoints[46] - compPoints[42];
-            var right3 = compPoints[43] - compPoints[45];
-            var right4 = compPoints[47] - compPoints[45];
+            var right1 = points[44] - points[42];
+            var right2 = points[46] - points[42];
+            var right3 = points[43] - points[45];
+            var right4 = points[47] - points[45];
             var rightRatio = (float)Math.Sin(Math.Abs(right1.Phase - right2.Phase) + Math.Abs(right3.Phase - right4.Phase) / 2);
 
             _defaultEyeRatio = Math.Min(Math.Max(_defaultEyeRatio, Math.Max(leftRatio * 0.8f, rightRatio * 0.8f)), 1.0f);
@@ -82,7 +69,7 @@ namespace detection
             return new[] { Math.Min(leftRatio / _defaultEyeRatio, 1.0f), Math.Min(rightRatio / _defaultEyeRatio, 1.0f)};
         }
 
-        private static Point GetPupil(in Point[] points, in Mat image, in float[] eyeRatio)
+        private static Point GetPupil(in Complex[] points, in Mat image, in float[] eyeRatio)
         {
             var pupils = new []
             {

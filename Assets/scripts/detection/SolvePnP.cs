@@ -1,6 +1,6 @@
 using System;
+using System.Numerics;
 using OpenCvSharp;
-using UnityEngine;
 
 namespace detection
 {
@@ -20,21 +20,21 @@ namespace detection
             {0.0f, 250.0f, -50.0f}
         };
 
-        public static Vector3 Solve(in DlibDotNet.Point[] points, in int row, in int col)
+        public static Vector3 Solve(in Complex[] points, in int row, in int col)
         {
-            var imagePoints = new float[,]
+            var imagePoints = new [,]
             {
-                { points[30].X, points[30].Y },
-                { points[21].X, points[21].Y },
-                { points[22].X, points[22].Y },
-                { points[39].X, points[39].Y },
-                { points[42].X, points[42].Y },
-                { points[31].X, points[31].Y },
-                { points[35].X, points[35].Y },
-                { points[48].X, points[48].Y },
-                { points[54].X, points[54].Y },
-                { points[57].X, points[57].Y },
-                { points[8].X, points[8].Y },
+                { points[30].Real, points[30].Imaginary },
+                { points[21].Real, points[21].Imaginary },
+                { points[22].Real, points[22].Imaginary },
+                { points[39].Real, points[39].Imaginary },
+                { points[42].Real, points[42].Imaginary },
+                { points[31].Real, points[31].Imaginary },
+                { points[35].Real, points[35].Imaginary },
+                { points[48].Real, points[48].Imaginary },
+                { points[54].Real, points[54].Imaginary },
+                { points[57].Real, points[57].Imaginary },
+                { points[8].Real, points[8].Imaginary },
             };
             var distCoeffs = new Mat(4, 1, MatType.CV_64FC1, 0);
             var center = new Point2d(col / 2.0, row / 2.0);

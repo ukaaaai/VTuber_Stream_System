@@ -1,10 +1,10 @@
 using System;
+using System.Numerics;
 using DlibDotNet;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
-using Point = DlibDotNet.Point;
 
 namespace detection
 {
@@ -57,11 +57,7 @@ namespace detection
 
             if (faces.Length == 0)
             {
-                if (_cantFindFrames >= 10)
-                {
-                    return;
-                }
-                if (_face == Rectangle.Empty)
+                if (_cantFindFrames >= 10 || _face.IsEmpty)
                 {
                     return;
                 }
@@ -73,13 +69,13 @@ namespace detection
                 _face = faces[0];
                 _cantFindFrames = 0;
             }
-            
-            var points = new Point[68];
 
             var shapes = _shapePredictor.Detect(image, _face);
+            var points = new Complex[68];
             Parallel.For(0, 68, i =>
             {
-                points[i] = shapes.GetPart((uint)i);
+                var point = shapes.GetPart((uint)i);
+                points[i] = new Complex(point.X, point.Y);
             });
             var param = CoordinateParser.Parse(points, image, mat);
             onDetect.Invoke(param);
