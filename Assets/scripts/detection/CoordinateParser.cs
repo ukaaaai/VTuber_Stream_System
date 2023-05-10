@@ -10,7 +10,6 @@ namespace detection
 {
     public static class CoordinateParser
     {
-        private static float _defaultEyeRatio = 0.3f;
         private const float DefaultBlowRatio = 1.5f;
 
         public static Param Parse(in Complex[] landmarkPoints, in Array2D<RgbPixel> image, in Mat mat)
@@ -19,7 +18,7 @@ namespace detection
             var pupil = GetPupil(landmarkPoints, mat, eyeRatio);
             var blow = GetBlow(landmarkPoints).ToArray();
             var mouth = GetMouth(landmarkPoints).ToArray();
-            var rot = SolvePnP.Solve(landmarkPoints, image.Rows, image.Columns);
+            var rot = HeadPoseEstimation.Solve(landmarkPoints, image.Rows, image.Columns);
 
             return new Param()
             {
@@ -52,21 +51,17 @@ namespace detection
 
         private static IEnumerable<float> GetEyeRatio(in Complex[] points)
         {
-            var left1 = points[38] - points[36];
-            var left2 = points[40] - points[36];
-            var left3 = points[37] - points[39];
-            var left4 = points[41] - points[39];
-            var leftRatio = (float)Math.Sin(Math.Abs(left1.Phase - left2.Phase) + Math.Abs(left3.Phase - left4.Phase) / 2);
+            var leftRatio =
+                (float)Math.Abs((points[37].Imaginary - points[41].Imaginary) / (points[38].Real - points[37].Real));
             
-            var right1 = points[44] - points[42];
-            var right2 = points[46] - points[42];
-            var right3 = points[43] - points[45];
-            var right4 = points[47] - points[45];
-            var rightRatio = (float)Math.Sin(Math.Abs(right1.Phase - right2.Phase) + Math.Abs(right3.Phase - right4.Phase) / 2);
-
-            _defaultEyeRatio = Math.Min(Math.Max(_defaultEyeRatio, Math.Max(leftRatio * 0.8f, rightRatio * 0.8f)), 1.0f);
+            var rightRatio = 
+                (float)Math.Abs((points[44].Imaginary - points[46].Imaginary) / (points[43].Real - points[44].Real));
             
-            return new[] { Math.Min(leftRatio / _defaultEyeRatio, 1.0f), Math.Min(rightRatio / _defaultEyeRatio, 1.0f)};
+            return new[]
+            {
+                Math.Clamp(leftRatio / 0.8f, 0, 1),
+                Math.Clamp(rightRatio / 0.8f, 0, 1)
+            };
         }
 
         private static Point GetPupil(in Complex[] points, in Mat image, in float[] eyeRatio)
@@ -76,10 +71,10 @@ namespace detection
                 new Point(-1, -1),
                 new Point(-1, -1)
             };
-            
-            if (eyeRatio[0] > 0.3f)
+
+            var calPupil = new Func<Complex[], Mat, int, int, Point>((points, image, a, b) =>
             {
-                var rect = MakeRect(points[36 .. 41]);
+                var rect = MakeRect(points[a .. b]);
                 var eye = image.SubMat(rect);
                 Cv2.CvtColor(eye, eye, ColorConversionCodes.BGR2GRAY);
                 Cv2.BitwiseNot(eye.Threshold(0, 255, ThresholdTypes.Otsu), eye);
@@ -87,21 +82,18 @@ namespace detection
                 var x = (int)(moments.M10 / moments.M00);
                 var y = (int)(moments.M01 / moments.M00);
                 
-                pupils[0] = new Point(2 * x / rect.X - 1, 2 * y / rect.Y - 1);
+                return new Point(2 * x / rect.X - 1, 2 * y / rect.Y - 1);
+            });
+            
+            if (eyeRatio[0] > 0.3f)
+            {
+                pupils[0] = calPupil(points, image, 36, 41);
             }
 
-            if (!(eyeRatio[1] > 0.3f))
-                return new Point(Math.Max(pupils[0].X, pupils[1].X), Math.Max(pupils[0].Y, pupils[1].Y));
+            // ReSharper disable once InvertIf
+            if (eyeRatio[1] > 0.3f)
             {
-                var rect = MakeRect(points[42 .. 47]);
-                var eye = image.SubMat(rect);
-                eye = eye.Threshold(0, 255, ThresholdTypes.Otsu);
-                Cv2.BitwiseNot(eye, eye);
-                var moments = eye.Moments(true);
-                var x = (int)(moments.M10 / moments.M00);
-                var y = (int)(moments.M01 / moments.M00);
-                
-                pupils[1] = new Point(2 * x / rect.X - 1, 2 * y / rect.Y - 1);
+                pupils[1] = calPupil(points, image, 42, 47);
             }
 
             return new Point(Math.Max(pupils[0].X, pupils[1].X), Math.Max(pupils[0].Y, pupils[1].Y));
