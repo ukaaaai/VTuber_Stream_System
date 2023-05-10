@@ -47,6 +47,7 @@ namespace Live2Dmodel
         public void UpdateParam(detection.Param param)
         {
             _userParam = param;
+            Debug.Log(param.ToJson());
         }
 
         public void SetPath(string path) => _modelPath = path;
