@@ -4,7 +4,7 @@ using OpenCvSharp;
 
 namespace detection
 {
-    public struct SolvePnP
+    public static class HeadPoseEstimation
     {
         private static readonly float[,] ModelPoints = {
             { 0.0f, 0.0f, 0.0f },
@@ -17,7 +17,7 @@ namespace detection
             { -70.0f, 130.0f, -100.0f },
             { 70.0f, 130.0f, -100.0f },
             { 0.0f, 158.0f, -10.0f },
-            {0.0f, 250.0f, -50.0f}
+            { 0.0f, 250.0f, -50.0f }
         };
 
         public static Vector3 Solve(in Complex[] points, in int row, in int col)
@@ -36,9 +36,7 @@ namespace detection
                 { points[57].Real, points[57].Imaginary },
                 { points[8].Real, points[8].Imaginary },
             };
-            var distCoeffs = new Mat(4, 1, MatType.CV_64FC1, 0);
-            var center = new Point2d(col / 2.0, row / 2.0);
-            var cameraMatrix = new[,]{{col, 0, center.X}, {0, col, center.Y}, {0, 0, 1}};
+            var cameraMatrix = new[,]{{col, 0, col / 2.0}, {0, col, row / 2.0}, {0, 0, 1}};
             var cameraMatrixMat = new Mat(3, 3, MatType.CV_64FC1, cameraMatrix);
             
             var rVec = new Mat();
@@ -46,7 +44,7 @@ namespace detection
             Cv2.SolvePnP(InputArray.Create(ModelPoints), 
                 InputArray.Create(imagePoints), 
                 cameraMatrixMat, 
-                distCoeffs, 
+                new Mat(4, 1, MatType.CV_64FC1, 0), 
                 rVec, 
                 tVec);
 
@@ -55,18 +53,16 @@ namespace detection
             
             var projMat = new Mat();
             Cv2.HConcat(rMat, new Mat(3, 1, MatType.CV_64FC1, 0), projMat);
-            var rotMatX = new Mat();
-            var rotMatY = new Mat();
-            var rotMatZ = new Mat();
+            var rotMat = new Mat();
             var eulerAngle = new Mat();
 
             Cv2.DecomposeProjectionMatrix(projMat, 
                 cameraMatrixMat, 
-                rVec, 
+                rMat,
                 tVec,
-                rotMatX,
-                rotMatY,
-                rotMatZ,
+                rotMat,
+                rotMat,
+                rotMat,
                 eulerAngle);
             
             var pitch = (float)eulerAngle.At<double>(0, 0);
