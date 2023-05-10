@@ -41,11 +41,11 @@ namespace detection
             return data;
         }
 
-        public static Param? FromByteArray(byte[] data)
+        public static Param FromByteArray(byte[] data)
         {
             if (data.Length < 24)
             {
-                return null;
+                throw new System.Exception("Data length is not enough");
             }
             var param = new Param
             {
@@ -69,6 +69,131 @@ namespace detection
         public string ToJson()
         {
             return JsonUtility.ToJson(this);
+        }
+        
+        public static Param FromJson(string json)
+        {
+            return JsonUtility.FromJson<Param>(json);
+        }
+
+        public static Param operator -(Param param1, Param param2)
+        {
+            return new Param
+            {
+                ParamAngleX = param1.ParamAngleX - param2.ParamAngleX,
+                ParamAngleY = param1.ParamAngleY - param2.ParamAngleY,
+                ParamAngleZ = param1.ParamAngleZ - param2.ParamAngleZ,
+                ParamEyeLOpen = param1.ParamEyeLOpen - param2.ParamEyeLOpen,
+                ParamEyeROpen = param1.ParamEyeROpen - param2.ParamEyeROpen,
+                ParamEyeBallX = param1.ParamEyeBallX - param2.ParamEyeBallX,
+                ParamEyeBallY = param1.ParamEyeBallY - param2.ParamEyeBallY,
+                ParamBrowLY = param1.ParamBrowLY - param2.ParamBrowLY,
+                ParamBrowRY = param1.ParamBrowRY - param2.ParamBrowRY,
+                ParamMouthForm = param1.ParamMouthForm - param2.ParamMouthForm,
+                ParamMouthOpenY = param1.ParamMouthOpenY - param2.ParamMouthOpenY,
+                ParamCheek = param1.ParamCheek,
+                ParamBreath = param1.ParamBreath - param2.ParamBreath
+            };
+        }
+
+        public static Param operator +(Param param1, Param param2)
+        {
+            return new Param
+            {
+                ParamAngleX = param1.ParamAngleX + param2.ParamAngleX,
+                ParamAngleY = param1.ParamAngleY + param2.ParamAngleY,
+                ParamAngleZ = param1.ParamAngleZ + param2.ParamAngleZ,
+                ParamEyeLOpen = param1.ParamEyeLOpen + param2.ParamEyeLOpen,
+                ParamEyeROpen = param1.ParamEyeROpen + param2.ParamEyeROpen,
+                ParamEyeBallX = param1.ParamEyeBallX + param2.ParamEyeBallX,
+                ParamEyeBallY = param1.ParamEyeBallY + param2.ParamEyeBallY,
+                ParamBrowLY = param1.ParamBrowLY + param2.ParamBrowLY,
+                ParamBrowRY = param1.ParamBrowRY + param2.ParamBrowRY,
+                ParamMouthForm = param1.ParamMouthForm + param2.ParamMouthForm,
+                ParamMouthOpenY = param1.ParamMouthOpenY + param2.ParamMouthOpenY,
+                ParamCheek = param1.ParamCheek,
+                ParamBreath = param1.ParamBreath + param2.ParamBreath
+            };
+        }
+        
+        public static Param operator *(Param param, double rate)
+        {
+            return new Param
+            {
+                ParamAngleX = param.ParamAngleX * (float)rate,
+                ParamAngleY = param.ParamAngleY * (float)rate,
+                ParamAngleZ = param.ParamAngleZ * (float)rate,
+                ParamEyeLOpen = param.ParamEyeLOpen * (float)rate,
+                ParamEyeROpen = param.ParamEyeROpen * (float)rate,
+                ParamEyeBallX = param.ParamEyeBallX * (float)rate,
+                ParamEyeBallY = param.ParamEyeBallY * (float)rate,
+                ParamBrowLY = param.ParamBrowLY * (float)rate,
+                ParamBrowRY = param.ParamBrowRY * (float)rate,
+                ParamMouthForm = param.ParamMouthForm * (float)rate,
+                ParamMouthOpenY = param.ParamMouthOpenY * (float)rate,
+                ParamCheek = param.ParamCheek,
+                ParamBreath = param.ParamBreath * (float)rate
+            };
+        }
+
+        public static Param operator *(double rate, Param param)
+        {
+            return new Param
+            {
+                ParamAngleX = param.ParamAngleX * (float)rate,
+                ParamAngleY = param.ParamAngleY * (float)rate,
+                ParamAngleZ = param.ParamAngleZ * (float)rate,
+                ParamEyeLOpen = param.ParamEyeLOpen * (float)rate,
+                ParamEyeROpen = param.ParamEyeROpen * (float)rate,
+                ParamEyeBallX = param.ParamEyeBallX * (float)rate,
+                ParamEyeBallY = param.ParamEyeBallY * (float)rate,
+                ParamBrowLY = param.ParamBrowLY * (float)rate,
+                ParamBrowRY = param.ParamBrowRY * (float)rate,
+                ParamMouthForm = param.ParamMouthForm * (float)rate,
+                ParamMouthOpenY = param.ParamMouthOpenY * (float)rate,
+                ParamCheek = param.ParamCheek,
+                ParamBreath = param.ParamBreath * (float)rate
+            };
+        }
+        
+        public static Param operator /(Param param, double rate)
+        {
+            return new Param
+            {
+                ParamAngleX = param.ParamAngleX / (float)rate,
+                ParamAngleY = param.ParamAngleY / (float)rate,
+                ParamAngleZ = param.ParamAngleZ / (float)rate,
+                ParamEyeLOpen = param.ParamEyeLOpen / (float)rate,
+                ParamEyeROpen = param.ParamEyeROpen / (float)rate,
+                ParamEyeBallX = param.ParamEyeBallX / (float)rate,
+                ParamEyeBallY = param.ParamEyeBallY / (float)rate,
+                ParamBrowLY = param.ParamBrowLY / (float)rate,
+                ParamBrowRY = param.ParamBrowRY / (float)rate,
+                ParamMouthForm = param.ParamMouthForm / (float)rate,
+                ParamMouthOpenY = param.ParamMouthOpenY / (float)rate,
+                ParamCheek = param.ParamCheek,
+                ParamBreath = param.ParamBreath / (float)rate
+            };
+        }
+
+        public static Param operator /(double rate, Param param)
+        {
+            return new Param
+            {
+                ParamAngleX = param.ParamAngleX / (float)rate,
+                ParamAngleY = param.ParamAngleY / (float)rate,
+                ParamAngleZ = param.ParamAngleZ / (float)rate,
+                ParamEyeLOpen = param.ParamEyeLOpen / (float)rate,
+                ParamEyeROpen = param.ParamEyeROpen / (float)rate,
+                ParamEyeBallX = param.ParamEyeBallX / (float)rate,
+                ParamEyeBallY = param.ParamEyeBallY / (float)rate,
+                ParamBrowLY = param.ParamBrowLY / (float)rate,
+                ParamBrowRY = param.ParamBrowRY / (float)rate,
+                ParamMouthForm = param.ParamMouthForm / (float)rate,
+                ParamMouthOpenY = param.ParamMouthOpenY / (float)rate,
+                ParamCheek = param.ParamCheek,
+                ParamBreath = param.ParamBreath / (float)rate
+            };
         }
     }
 }
