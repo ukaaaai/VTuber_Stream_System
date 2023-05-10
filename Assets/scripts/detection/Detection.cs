@@ -52,16 +52,12 @@ namespace detection
                 (uint)height, 
                 (uint)width,
                 (uint)(width * elemSize));
-                
+            
             var faces = _faceDetector.Operator(image);
-
+            
             if (faces.Length == 0)
             {
-                if (_cantFindFrames >= 10 || _face.IsEmpty)
-                {
-                    return;
-                }
-
+                if (_cantFindFrames >= 10 || _face.IsEmpty) return;
                 _cantFindFrames++;
             }
             else
@@ -71,6 +67,7 @@ namespace detection
             }
 
             var shapes = _shapePredictor.Detect(image, _face);
+            
             var points = new Complex[68];
             Parallel.For(0, 68, i =>
             {
