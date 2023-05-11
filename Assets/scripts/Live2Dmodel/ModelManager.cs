@@ -13,7 +13,7 @@ namespace Live2Dmodel
     {
         private string _modelPath;
         private CubismModel _model;
-        private int[] _paramIDs = new int[13];
+        private readonly int[] _paramIDs = new int[13];
         private Dictionary<int, CubismModel> _remoteModels;
         private Dictionary<int, int[]> _remoteModelParamIDs;
         public static float ParamBreath;
@@ -47,7 +47,7 @@ namespace Live2Dmodel
         public void UpdateParam(detection.Param param)
         {
             _userParam = param;
-            Debug.Log(param.ToJson());
+            //Debug.Log(param.ToJson());
         }
 
         public void SetPath(string path) => _modelPath = path;
