@@ -11,6 +11,7 @@ namespace detection
     public static class CoordinateParser
     {
         private const float DefaultBlowRatio = 1.5f;
+        private static Param _paramFiltered;
 
         public static Param Parse(in Complex[] landmarkPoints, in Array2D<RgbPixel> image, in Mat mat)
         {
@@ -20,7 +21,7 @@ namespace detection
             var mouth = GetMouth(landmarkPoints).ToArray();
             var rot = HeadPoseEstimation.Solve(landmarkPoints, image.Rows, image.Columns);
 
-            return new Param()
+            return _paramFiltered = new Param()
             {
                 ParamAngleX = rot.X,
                 ParamAngleY = rot.Y,
@@ -35,7 +36,7 @@ namespace detection
                 ParamMouthOpenY = mouth[0],
                 ParamCheek = 0,
                 ParamBreath = Live2Dmodel.ModelManager.ParamBreath
-            };
+            } + _paramFiltered / 6;
         }
 
         private static Rect MakeRect(IEnumerable<Complex> points)
