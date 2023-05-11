@@ -1,6 +1,7 @@
 using System;
 using System.Numerics;
 using OpenCvSharp;
+using Vector3 = System.Numerics.Vector3;
 
 namespace detection
 {
@@ -69,9 +70,9 @@ namespace detection
             var yaw = (float)eulerAngle.At<double>(1, 0);
             var roll = (float)eulerAngle.At<double>(2, 0);
 
-            pitch = Math.Clamp(Math.Sign(pitch) * Math.Min(Math.Abs(pitch), 180 - Math.Abs(pitch)) * 2, -30, 30);
-            yaw = Math.Clamp(Math.Sign(yaw) * Math.Min(Math.Abs(yaw) * 2, 180 -Math.Abs(yaw)), -30, 30);
-            roll = Math.Clamp(Math.Sign(roll) * Math.Min(Math.Abs(roll) * 2, 180 - Math.Abs(roll)), -30, 30);
+            pitch = Math.Clamp(Math.Abs(pitch) <= 90 ? pitch : -Math.Sign(pitch) * (180 - Math.Abs(pitch)), -30, 30);
+            yaw = Math.Clamp(Math.Abs(yaw) <= 90 ? yaw : -Math.Sign(yaw) * (180 - Math.Abs(yaw)), -30, 30);
+            roll = Math.Clamp(Math.Abs(roll) <= 90 ? roll : -Math.Sign(roll) * (180 - Math.Abs(roll)), -30, 30);
 
             var rotVecEuler = new Vector3(yaw, pitch, roll);
 
