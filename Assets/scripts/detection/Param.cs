@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace detection
@@ -45,7 +46,7 @@ namespace detection
         {
             if (data.Length < 24)
             {
-                throw new System.Exception("Data length is not enough");
+                throw new Exception("Data length is not enough");
             }
             var param = new Param
             {
@@ -64,6 +65,26 @@ namespace detection
                 ParamBreath = data[12] / (float)AdjRate
             };
             return param;
+        }
+
+        private Param Clamp()
+        {
+            return new Param
+            {
+                ParamAngleX = Math.Clamp(ParamAngleX, -30, 30),
+                ParamAngleY = Math.Clamp(ParamAngleY, -30, 30),
+                ParamAngleZ = Math.Clamp(ParamAngleZ, -30, 30),
+                ParamEyeLOpen = Math.Clamp(ParamEyeLOpen, 0, 1),
+                ParamEyeROpen = Math.Clamp(ParamEyeROpen, 0, 1),
+                ParamEyeBallX = Math.Clamp(ParamEyeBallX, -1, 1),
+                ParamEyeBallY = Math.Clamp(ParamEyeBallY, -1, 1),
+                ParamBrowLY = Math.Clamp(ParamBrowLY, -1, 1),
+                ParamBrowRY = Math.Clamp(ParamBrowRY, -1, 1),
+                ParamMouthForm = Math.Clamp(ParamMouthForm, -1, 1),
+                ParamMouthOpenY = Math.Clamp(ParamMouthOpenY, 0, 1),
+                ParamCheek = Math.Clamp(ParamCheek, 0, 1),
+                ParamBreath = Math.Clamp(ParamBreath, 0, 1)
+            };
         }
         
         public string ToJson()
@@ -93,7 +114,7 @@ namespace detection
                 ParamMouthOpenY = param1.ParamMouthOpenY - param2.ParamMouthOpenY,
                 ParamCheek = param1.ParamCheek,
                 ParamBreath = param1.ParamBreath - param2.ParamBreath
-            };
+            }.Clamp();
         }
 
         public static Param operator +(Param param1, Param param2)
@@ -113,7 +134,7 @@ namespace detection
                 ParamMouthOpenY = param1.ParamMouthOpenY + param2.ParamMouthOpenY,
                 ParamCheek = param1.ParamCheek,
                 ParamBreath = param1.ParamBreath + param2.ParamBreath
-            };
+            }.Clamp();
         }
         
         public static Param operator *(Param param, double rate)
@@ -133,7 +154,7 @@ namespace detection
                 ParamMouthOpenY = param.ParamMouthOpenY * (float)rate,
                 ParamCheek = param.ParamCheek,
                 ParamBreath = param.ParamBreath * (float)rate
-            };
+            }.Clamp();
         }
 
         public static Param operator *(double rate, Param param)
@@ -153,7 +174,7 @@ namespace detection
                 ParamMouthOpenY = param.ParamMouthOpenY * (float)rate,
                 ParamCheek = param.ParamCheek,
                 ParamBreath = param.ParamBreath * (float)rate
-            };
+            }.Clamp();
         }
         
         public static Param operator /(Param param, double rate)
@@ -173,7 +194,7 @@ namespace detection
                 ParamMouthOpenY = param.ParamMouthOpenY / (float)rate,
                 ParamCheek = param.ParamCheek,
                 ParamBreath = param.ParamBreath / (float)rate
-            };
+            }.Clamp();
         }
 
         public static Param operator /(double rate, Param param)
@@ -193,7 +214,7 @@ namespace detection
                 ParamMouthOpenY = param.ParamMouthOpenY / (float)rate,
                 ParamCheek = param.ParamCheek,
                 ParamBreath = param.ParamBreath / (float)rate
-            };
+            }.Clamp();
         }
     }
 }
