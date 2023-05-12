@@ -3,6 +3,7 @@ using System.Numerics;
 using DlibDotNet;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using OpenCvSharp;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,7 +13,9 @@ namespace detection
     {
         [Serializable] private class DetectParam: UnityEvent<Param> { }
         [SerializeField] private DetectParam onDetect = new();
-        
+        [Serializable] private class PreviewMat: UnityEvent<Mat> { }
+        [SerializeField] private PreviewMat onPreview = new();
+
         private bool _isRunning;
         
         private static FrontalFaceDetector _faceDetector;
@@ -69,13 +72,19 @@ namespace detection
             var shapes = _shapePredictor.Detect(image, _face);
             
             var points = new Complex[68];
+            mat.Rectangle(new OpenCvSharp.Point(0, 0), new OpenCvSharp.Point(width, height), Scalar.White, -1);
             Parallel.For(0, 68, i =>
             {
                 var point = shapes.GetPart((uint)i);
                 points[i] = new Complex(point.X, point.Y);
+                mat.DrawMarker(new OpenCvSharp.Point(point.X, point.Y), Scalar.Red, MarkerTypes.Cross, 5, 2);
+                mat.PutText(i.ToString(), new OpenCvSharp.Point(point.X, point.Y), HersheyFonts.HersheySimplex, 0.1, Scalar.Red);
             });
             var param = CoordinateParser.Parse(points, image, mat);
             onDetect.Invoke(param);
+            mat.PutText($"pitch: {param.ParamAngleX} yaw:{param.ParamAngleY} roll:{param.ParamAngleZ}", new OpenCvSharp.Point(40, 40), HersheyFonts.HersheySimplex, 0.3, Scalar.Red);
+            Cv2.Flip(mat, mat, FlipMode.X);
+            onPreview.Invoke(mat);
         }
     }
 }
