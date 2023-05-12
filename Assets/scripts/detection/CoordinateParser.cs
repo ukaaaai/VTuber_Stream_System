@@ -117,8 +117,8 @@ namespace detection
         {
             return new[]
             {
-                (float)Math.Clamp((points[62].Imaginary - points[30].Imaginary) / (points[66].Imaginary- points[62].Imaginary), -1, 1),
-                (float)Math.Clamp((points[54].Real - points[48].Real) / (points[35].Real - points[31].Real) - 1, 0, 1)
+                (float)Math.Clamp(2 * (points[62].Imaginary - points[30].Imaginary) / (points[66].Imaginary- points[62].Imaginary) - 1, -1, 1),
+                (float)Math.Clamp(2 * (points[54].Real - points[48].Real) / (points[35].Real - points[31].Real) - 1, 0, 1)
             };
         }
     }
