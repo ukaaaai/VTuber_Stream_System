@@ -8,8 +8,8 @@ namespace detection
     {
         private readonly int _maxDevices;
 
-        public const int Width = 640;
-        public const int Height = 360;
+        private const int Width = 800;
+        private const int Height = 450;
         
         private WebCamTexture _webCamTexture;
         private string _currentDevice;
@@ -75,6 +75,7 @@ namespace detection
                 new Size(Width, Height));
             Cv2.CvtColor(mat, mat, ColorConversionCodes.RGBA2BGR);
             Cv2.Flip(mat, mat, FlipMode.X);
+            Cv2.GaussianBlur(mat, mat, new Size(17, 17), 1);
         }
 
         private void Stop()
