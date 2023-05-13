@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Numerics;
 using DlibDotNet;
 using System.Runtime.InteropServices;
@@ -27,7 +28,11 @@ namespace detection
         private void Start()
         {
             _faceDetector = Dlib.GetFrontalFaceDetector();
-            _shapePredictor = ShapePredictor.Deserialize("Assets/scripts/shape_predictor_68_face_landmarks.dat");
+            using var fs = File.OpenRead(Application.dataPath + "/StreamingAssets/shape_predictor_68_face_landmarks.dat");
+            var bytes = new byte[fs.Length];
+            // ReSharper disable once MustUseReturnValue
+            fs.Read(bytes, 0, bytes.Length);
+            _shapePredictor = ShapePredictor.Deserialize(bytes);
         }
         private void Update()
         {
