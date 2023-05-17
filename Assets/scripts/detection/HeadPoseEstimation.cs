@@ -21,6 +21,10 @@ namespace detection
             { 0.0f, 250.0f, -50.0f }
         };
 
+        private static readonly Mat RMat = new();
+        private static readonly Mat RVec = new();
+        private static readonly Mat Vec = new();
+
         public static Vector3 Solve(in Complex[] points, in int row, in int col)
         {
             var imagePoints = new [,]
@@ -37,42 +41,29 @@ namespace detection
                 { points[57].Real, points[57].Imaginary },
                 { points[8].Real, points[8].Imaginary },
             };
-            var cameraMatrix = new[,]{{col, 0, col / 2.0}, {0, col, row / 2.0}, {0, 0, 1}};
+            
+            var cameraMatrix = new[,]
+            {
+                {col, 0, col / 2.0}, 
+                {0, col, row / 2.0}, 
+                {0, 0, 1}
+            };
             var cameraMatrixMat = new Mat(3, 3, MatType.CV_64FC1, cameraMatrix);
             
-            var rVec = new Mat();
-            var tVec = new Mat();
             Cv2.SolvePnP(InputArray.Create(ModelPoints), 
                 InputArray.Create(imagePoints), 
                 cameraMatrixMat, 
                 new Mat(4, 1, MatType.CV_64FC1, 0), 
-                rVec, 
-                tVec);
+                RVec, 
+                Vec);
 
-            var rMat = new Mat();
-            Cv2.Rodrigues(rVec, rMat);
+            Cv2.Rodrigues(RVec, RMat);
             
-            var projMat = new Mat();
-            Cv2.HConcat(rMat, new Mat(3, 1, MatType.CV_64FC1, 0), projMat);
-            var rotMat = new Mat();
-            var eulerAngle = new Mat();
+            const float r2d = 180 / (float)Math.PI;
 
-            Cv2.DecomposeProjectionMatrix(projMat, 
-                cameraMatrixMat, 
-                rMat,
-                tVec,
-                rotMat,
-                rotMat,
-                rotMat,
-                eulerAngle);
-            
-            var pitch = (float)eulerAngle.At<double>(0, 0);
-            var yaw = (float)eulerAngle.At<double>(1, 0);
-            var roll = (float)eulerAngle.At<double>(2, 0);
-
-            pitch = Math.Clamp(Math.Abs(pitch) <= 90 ? pitch : -Math.Sign(pitch) * (180 - Math.Abs(pitch)), -30, 30);
-            yaw = Math.Clamp(Math.Abs(yaw) <= 90 ? yaw : -Math.Sign(yaw) * (180 - Math.Abs(yaw)), -30, 30);
-            roll = Math.Clamp(Math.Abs(roll) <= 90 ? roll : -Math.Sign(roll) * (180 - Math.Abs(roll)), -30, 30);
+            var yaw = Math.Clamp((float)Math.Asin(-RMat.At<double>(2, 0)) * r2d, -30, 30);
+            var pitch = Math.Clamp((float)Math.Atan(RMat.At<double>(2, 1) / RMat.At<double>(2, 2)) * r2d, -30, 30);
+            var roll = Math.Clamp((float)Math.Atan(RMat.At<double>(1, 0) / RMat.At<double>(0, 0)) * r2d, -30, 30);
 
             var rotVecEuler = new Vector3(yaw, pitch, roll);
 
