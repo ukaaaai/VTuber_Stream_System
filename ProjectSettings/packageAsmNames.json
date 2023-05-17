@@ -7,14 +7,14 @@
             ]
         },
         {
-            "packageName": "DlibDotNet",
-            "fileNames": [
-                "DlibDotNet"
-            ]
-        },
-        {
             "packageName": "OpenCvSharp4.Windows",
             "fileNames": []
+        },
+        {
+            "packageName": "System.Drawing.Common",
+            "fileNames": [
+                "System.Drawing.Common"
+            ]
         },
         {
             "packageName": "OpenCvSharp4",
@@ -27,15 +27,9 @@
             "fileNames": []
         },
         {
-            "packageName": "FaceRecognitionDotNet",
+            "packageName": "DlibDotNet",
             "fileNames": [
-                "FaceRecognitionDotNet"
-            ]
-        },
-        {
-            "packageName": "System.Drawing.Common",
-            "fileNames": [
-                "System.Drawing.Common"
+                "DlibDotNet"
             ]
         }
     ]
