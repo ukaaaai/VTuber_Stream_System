@@ -8,9 +8,11 @@ namespace detection
     {
         private readonly int _maxDevices;
 
-        private const int Width = 640;
-        private const int Height = 360;
-        
+        public static int Width => 640;
+
+        public static int Height => 360;
+
+
         private WebCamTexture _webCamTexture;
         private string _currentDevice;
 
