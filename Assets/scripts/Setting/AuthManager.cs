@@ -15,12 +15,19 @@ namespace Setting
             }
         }
 
+        public static bool IsLogin = false;
+
         private FirebaseUser _user;
         public string DisplayName => _user.DisplayName;
         public string UserID => _user.UserId;
         
         public void Login()
         {
+            if (Application.internetReachability == NetworkReachability.NotReachable)
+            {
+                IsLogin = false;
+                return;
+            }
             FirebaseAuth.DefaultInstance.SignInAnonymouslyAsync().ContinueWith(task =>
             {
                 if (task.IsCanceled)
@@ -35,6 +42,7 @@ namespace Setting
                 }
                 _user = task.Result;
                 Debug.LogFormat("User signed in successfully: {0} ({1})", _user.DisplayName, _user.UserId);
+                IsLogin = true;
             });
         }
         
@@ -54,6 +62,7 @@ namespace Setting
                     return;
                 }
                 Debug.Log("User deleted successfully");
+                IsLogin = false;
             });
             _user = null;
         }
