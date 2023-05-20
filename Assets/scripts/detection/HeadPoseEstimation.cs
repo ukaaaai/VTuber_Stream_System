@@ -7,7 +7,7 @@ namespace detection
 {
     public static class HeadPoseEstimation
     {
-        private static readonly float[,] ModelPoints = {
+        private static readonly float[,] Model = {
             { 0.0f, 0.0f, 0.0f },
             { -30.0f, -125.0f, -30.0f },
             { 30.0f, -125.0f, -30.0f },
@@ -21,12 +21,33 @@ namespace detection
             { 0.0f, 250.0f, -50.0f }
         };
 
+        private static readonly InputArray ModelPoints;
+        private static (int row, int col) _param;
+        private static Mat _cameraMatrix;
+
+        static HeadPoseEstimation()
+        {
+            ModelPoints = InputArray.Create(Model);
+            _param = (0, 0);
+        }
+
         private static readonly Mat RMat = new();
         private static readonly Mat RVec = new();
         private static readonly Mat Vec = new();
 
-        public static Vector3 Solve(in Complex[] points, in int row, in int col)
+        public static void Solve(in Complex[] points, in (int row, int col) param, out (float yaw, float pitch, float roll) eulerVec)
         {
+            if (_param != param)
+            {
+                _cameraMatrix = new Mat(3, 3, MatType.CV_32FC1, new[,]
+                {
+                    { param.col, 0, param.col / 2.0f },
+                    { 0, param.col, param.row / 2.0f },
+                    { 0, 0, 1 }
+                });
+                _param = param;
+            }
+            
             var imagePoints = new [,]
             {
                 { points[30].Real, points[30].Imaginary },
@@ -39,20 +60,12 @@ namespace detection
                 { points[48].Real, points[48].Imaginary },
                 { points[54].Real, points[54].Imaginary },
                 { points[57].Real, points[57].Imaginary },
-                { points[8].Real, points[8].Imaginary },
+                { points[8].Real, points[8].Imaginary }
             };
             
-            var cameraMatrix = new[,]
-            {
-                {col, 0, col / 2.0}, 
-                {0, col, row / 2.0}, 
-                {0, 0, 1}
-            };
-            var cameraMatrixMat = new Mat(3, 3, MatType.CV_64FC1, cameraMatrix);
-            
-            Cv2.SolvePnP(InputArray.Create(ModelPoints), 
+            Cv2.SolvePnP(ModelPoints, 
                 InputArray.Create(imagePoints), 
-                cameraMatrixMat, 
+                _cameraMatrix, 
                 new Mat(4, 1, MatType.CV_64FC1, 0), 
                 RVec, 
                 Vec);
@@ -65,9 +78,7 @@ namespace detection
             var pitch = Math.Clamp((float)Math.Atan(RMat.At<double>(2, 1) / RMat.At<double>(2, 2)) * r2d, -30, 30);
             var roll = Math.Clamp((float)Math.Atan(RMat.At<double>(1, 0) / RMat.At<double>(0, 0)) * r2d, -30, 30);
 
-            var rotVecEuler = new Vector3(yaw, pitch, roll);
-
-            return rotVecEuler;
+            eulerVec = (yaw, pitch, roll);
         }
     }
 }

@@ -19,13 +19,13 @@ namespace detection
             var pupil = GetPupil(landmarkPoints, mat, eyeRatio);
             var blow = GetBlow(landmarkPoints).ToArray();
             var mouth = GetMouth(landmarkPoints).ToArray();
-            var rot = HeadPoseEstimation.Solve(landmarkPoints, image.Rows, image.Columns);
+            HeadPoseEstimation.Solve(landmarkPoints, (image.Rows, image.Columns), out var rot);
 
             return _paramFiltered = new Param()
             {
-                ParamAngleX = rot.X,
-                ParamAngleY = rot.Y,
-                ParamAngleZ = rot.Z,
+                ParamAngleX = rot.yaw,
+                ParamAngleY = rot.pitch,
+                ParamAngleZ = rot.roll,
                 ParamEyeLOpen = eyeRatio[0],
                 ParamEyeROpen = eyeRatio[1],
                 ParamEyeBallX = pupil.X,
