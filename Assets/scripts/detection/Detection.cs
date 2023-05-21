@@ -50,7 +50,6 @@ namespace detection
             
             var array = new byte[_width * _height * elemSize];
             Marshal.Copy(mat.Data, array, 0, array.Length);
-            mat.Dispose();
             
             var image = Dlib.LoadImageData<RgbPixel>(
                 array,
