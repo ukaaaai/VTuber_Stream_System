@@ -420,9 +420,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206971587}
-        m_TargetAssemblyTypeName: detection.Detection, Assembly-CSharp
-        m_MethodName: StopDetection
+      - m_Target: {fileID: 206971585}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -554,9 +554,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206971587}
-        m_TargetAssemblyTypeName: detection.Detection, Assembly-CSharp
-        m_MethodName: StartDetection
+      - m_Target: {fileID: 206971585}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -615,7 +615,6 @@ GameObject:
   - component: {fileID: 206971586}
   - component: {fileID: 206971585}
   - component: {fileID: 206971589}
-  - component: {fileID: 206971587}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -650,48 +649,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &206971587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 206971584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9293cf94da9619f4a9ca83bae1edb4b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onDetect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2126238171}
-        m_TargetAssemblyTypeName: Live2Dmodel.ModelManager, Assembly-CSharp
-        m_MethodName: UpdateParam
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPreview:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2026030501}
-        m_TargetAssemblyTypeName: UI.PreviewMat, Assembly-CSharp
-        m_MethodName: Preview
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &206971589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2636,7 +2593,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206971587}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: detection.Detection, Assembly-CSharp
         m_MethodName: 
         m_Mode: 1

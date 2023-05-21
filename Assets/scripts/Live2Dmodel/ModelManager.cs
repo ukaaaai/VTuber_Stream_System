@@ -47,7 +47,6 @@ namespace Live2Dmodel
         public void UpdateParam(detection.Param param)
         {
             _userParam = param;
-            //Debug.Log(param.ToJson());
         }
 
         public void SetPath(string path) => _modelPath = path;
@@ -55,10 +54,7 @@ namespace Live2Dmodel
         public void LoadModel()
         {
             if(_model != null) Destroy(_model.gameObject);
-            _model = null;
-            var model3Json = CubismModel3Json.LoadAtPath(_modelPath, LoadAsset);
-            
-            _model = model3Json.ToModel();
+            _model = CubismModel3Json.LoadAtPath(_modelPath, LoadAsset).ToModel();
             
             var parent = GameObject.Find("Canvas");
             Transform transform1;
@@ -89,19 +85,11 @@ namespace Live2Dmodel
 
         private static object LoadAsset(Type assetType, string absolutePath)
         {
-            if (assetType == typeof(byte[]))
-            {
-                return File.ReadAllBytes(absolutePath);
-            }
-
-            if (assetType == typeof(string))
-            {
-                return File.ReadAllText(absolutePath);
-            }
-
+            if (assetType == typeof(byte[])) return File.ReadAllBytes(absolutePath);
+            if (assetType == typeof(string)) return File.ReadAllText(absolutePath);
             if (assetType != typeof(Texture2D)) throw new NotSupportedException();
-            var texture = new Texture2D(1, 1);
             
+            var texture = new Texture2D(1, 1);
             texture.LoadImage(File.ReadAllBytes(absolutePath));
             
             return texture;
