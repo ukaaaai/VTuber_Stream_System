@@ -68,19 +68,26 @@ namespace Live2Dmodel
             
             var paramList = _model.Parameters;
             var paramStr = paramList.Select(p => p.Id).ToArray();
-            _paramIDs[0] = Array.IndexOf(paramStr, "ParamAngleX");
-            _paramIDs[1] = Array.IndexOf(paramStr, "ParamAngleY");
-            _paramIDs[2] = Array.IndexOf(paramStr, "ParamAngleZ");
-            _paramIDs[3] = Array.IndexOf(paramStr, "ParamEyeLOpen");
-            _paramIDs[4] = Array.IndexOf(paramStr, "ParamEyeROpen");
-            _paramIDs[5] = Array.IndexOf(paramStr, "ParamEyeBallX");
-            _paramIDs[6] = Array.IndexOf(paramStr, "ParamEyeBallY");
-            _paramIDs[7] = Array.IndexOf(paramStr, "ParamBrowLY");
-            _paramIDs[8] = Array.IndexOf(paramStr, "ParamBrowRY");
-            _paramIDs[9] = Array.IndexOf(paramStr, "ParamMouthForm");
-            _paramIDs[10] = Array.IndexOf(paramStr, "ParamMouthOpenY");
-            _paramIDs[11] = Array.IndexOf(paramStr, "ParamCheek");
-            _paramIDs[12] = Array.IndexOf(paramStr, "ParamBreath");
+            try
+            {
+                _paramIDs[0] = Array.IndexOf(paramStr, "ParamAngleX");
+                _paramIDs[1] = Array.IndexOf(paramStr, "ParamAngleY");
+                _paramIDs[2] = Array.IndexOf(paramStr, "ParamAngleZ");
+                _paramIDs[3] = Array.IndexOf(paramStr, "ParamEyeLOpen");
+                _paramIDs[4] = Array.IndexOf(paramStr, "ParamEyeROpen");
+                _paramIDs[5] = Array.IndexOf(paramStr, "ParamEyeBallX");
+                _paramIDs[6] = Array.IndexOf(paramStr, "ParamEyeBallY");
+                _paramIDs[7] = Array.IndexOf(paramStr, "ParamBrowLY");
+                _paramIDs[8] = Array.IndexOf(paramStr, "ParamBrowRY");
+                _paramIDs[9] = Array.IndexOf(paramStr, "ParamMouthForm");
+                _paramIDs[10] = Array.IndexOf(paramStr, "ParamMouthOpenY");
+                _paramIDs[11] = Array.IndexOf(paramStr, "ParamCheek");
+                _paramIDs[12] = Array.IndexOf(paramStr, "ParamBreath");
+            }
+            catch
+            {
+                _model = null;
+            }
         }
 
         private static object LoadAsset(Type assetType, string absolutePath)
