@@ -9,14 +9,11 @@ namespace detection
         private readonly int _maxDevices;
 
         public static int Width => 640;
-
         public static int Height => 360;
 
-
         private WebCamTexture _webCamTexture;
-        private string _currentDevice;
-
-        //singleton
+        private string _currentDevice; 
+        
         private static CameraManager _instance;
         public static CameraManager Instance
         {
@@ -41,22 +38,12 @@ namespace detection
 
         public void CameraOpen(string device)
         {
-            if(_currentDevice == device)
-                return;
+            if(_currentDevice == device) return;
             
             if(_webCamTexture != null) _webCamTexture.Stop();
-            
-            try
-            {
-                _webCamTexture = new WebCamTexture(device, Width, Height, 30);
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
+            _webCamTexture = new WebCamTexture(device, Width, Height, 30);
             
             _currentDevice = device;
-            _webCamTexture.Play();
         }
         
         public void GetFrame(out Mat mat)
@@ -79,7 +66,13 @@ namespace detection
             Cv2.GaussianBlur(mat, mat, new Size(13, 13), 1);
         }
 
-        private void Stop()
+        public void Start()
+        {
+            if(_webCamTexture != null)
+                _webCamTexture.Play();
+        }
+
+        public void Stop()
         {
             _webCamTexture.Stop();
         }

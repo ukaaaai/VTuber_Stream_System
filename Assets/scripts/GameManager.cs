@@ -29,8 +29,17 @@ public sealed class GameManager : MonoBehaviour
         _modelManager = FindObjectOfType<ModelManager>();
     }
     
-    public void Pause() => _isPause = true;
-    public void Resume() => _isPause = false;
+    public void Pause()
+    {
+        _isPause = true;
+        CameraManager.Instance.Stop();
+    }
+    
+    public void Resume()
+    {
+        _isPause = false;
+        CameraManager.Instance.Start();
+    }
 
     private void Update()
     {
