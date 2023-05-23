@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using DlibDotNet;
 using OpenCvSharp;
 using Util;
 
@@ -11,13 +10,14 @@ namespace detection
         private const float DefaultBlowRatio = 1.5f;
         private static Param _paramFiltered;
 
-        public static Param Parse(in Complex[] landmarkPoints, in Array2D<RgbPixel> image, in Mat mat)
+        public static Param Parse(in Complex[] landmarkPoints, in (int row, int col) shape, in Mat mat)
         {
             var eyeRatio = GetEyeRatio(landmarkPoints);
             var pupil = GetPupil(landmarkPoints, mat, eyeRatio);
+            mat.Dispose();
             var blow = GetBlow(landmarkPoints);
             var mouth = GetMouth(landmarkPoints);
-            HeadPoseEstimation.Solve(landmarkPoints, (image.Rows, image.Columns), out var rot);
+            HeadPoseEstimation.Solve(landmarkPoints, shape, out var rot);
 
             return _paramFiltered = new Param
             {
