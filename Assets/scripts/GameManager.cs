@@ -1,12 +1,15 @@
+using Cysharp.Threading.Tasks;
 using detection;
 using Live2Dmodel;
 using UnityEngine;
+
 
 public sealed class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     private ModelManager _modelManager;
     private bool _isPause = true;
+    private bool _doDetect = true;
 
     private void Awake(){
         if (_instance == null)
@@ -41,14 +44,19 @@ public sealed class GameManager : MonoBehaviour
         CameraManager.Instance.Start();
     }
 
-    private void Update()
+    private async void Update()
     {
         if (_isPause) return;
-        CameraManager.Instance.GetFrame(out var frame); 
-        var param = Detection.Instance.Detect(frame);
-        if (param != null) _modelManager.UpdateParam(param.Value);
+        _doDetect = !_doDetect;
+        if (!_doDetect) return;
+        var frame = CameraManager.Instance.GetFrame();
+        var detectTask = UniTask.RunOnThreadPool(() =>
+        {
+            var param = Detection.Detect(frame);
+            if (param != null) _modelManager.UpdateParam(param.Value);
+        });
+        await detectTask;
     }
-
     private void OnApplicationQuit()
     {
         Setting.AuthManager.Instance.Logout();
