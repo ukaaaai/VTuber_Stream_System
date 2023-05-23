@@ -46,7 +46,7 @@ namespace detection
             _currentDevice = device;
         }
         
-        public void GetFrame(out Mat mat)
+        public Mat GetFrame()
         {
             if (!_webCamTexture.isPlaying)
             {
@@ -56,14 +56,14 @@ namespace detection
             var height = _webCamTexture.height;
             var width = _webCamTexture.width;
 
-            mat = new Mat();
+            var mat = new Mat(height, width, MatType.CV_8UC4, _webCamTexture.GetPixels32());
             Cv2.Resize(
-                new Mat(height, width, MatType.CV_8UC4, _webCamTexture.GetPixels32()), 
+                mat, 
                 mat, 
                 new Size(Width, Height));
             Cv2.CvtColor(mat, mat, ColorConversionCodes.RGBA2BGR);
             Cv2.Flip(mat, mat, FlipMode.X);
-            Cv2.GaussianBlur(mat, mat, new Size(13, 13), 1);
+            return mat;
         }
 
         public void Start()
