@@ -3,6 +3,7 @@ using Util;
 using DlibDotNet;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using OpenCvSharp;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ namespace detection
 
         public static void Init(){}
 
-        public static Param? Detect(in Mat mat)
+        private static Param? DetectTask(in Mat mat)
         {
             var steps = mat.ElemSize() * CameraManager.Width;
             
@@ -49,6 +50,11 @@ namespace detection
                 points[i] = new Complex(point.X, point.Y);
             });
             return CoordinateParser.Parse(points, (CameraManager.Height, CameraManager.Width), mat);
+        }
+
+        public static UniTask<Param?> Detect(in Mat mat)
+        {
+            return new UniTask<Param?>(DetectTask(mat));
         }
     }
 }
