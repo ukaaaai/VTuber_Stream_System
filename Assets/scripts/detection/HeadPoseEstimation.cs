@@ -6,6 +6,8 @@ namespace detection
 {
     public static class HeadPoseEstimation
     {
+        private static (float yaw , float pitch, float roll) _eulerVec;
+        
         private static readonly float[,] Model = {
             { 0.0f, 0.0f, 0.0f },
             { -30.0f, -125.0f, -30.0f },
@@ -77,7 +79,7 @@ namespace detection
             var pitch = Math.Clamp((float)Math.Atan(RMat.At<double>(2, 1) / RMat.At<double>(2, 2)) * r2d, -30, 30);
             var roll = Math.Clamp((float)Math.Atan(RMat.At<double>(1, 0) / RMat.At<double>(0, 0)) * r2d, -30, 30);
 
-            eulerVec = (yaw, pitch, roll);
+            _eulerVec = eulerVec = (yaw + _eulerVec.yaw / 5, pitch + _eulerVec.pitch / 5, roll + _eulerVec.roll / 5);
         }
     }
 }
