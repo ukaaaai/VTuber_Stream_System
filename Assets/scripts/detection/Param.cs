@@ -18,41 +18,42 @@ namespace detection
         public float ParamMouthOpenY;
         public float ParamCheek;
         public float ParamBreath;
-        private const int Offset = 128;
+        private const int Offset = 127;
         private const int AdjRate = 127;
+        private const int AngleRate = AdjRate / 30;
 
         public byte[] ToDataArray()
         {
             var data = new[]
             {
-                (byte)((int)ParamAngleX * AdjRate / 30 + Offset),
-                (byte)((int)ParamAngleY * AdjRate / 30 + Offset),
-                (byte)((int)ParamAngleZ * AdjRate / 30 + Offset),
-                (byte)((int)ParamEyeLOpen * AdjRate),
-                (byte)((int)ParamEyeROpen * AdjRate),
-                (byte)((int)ParamEyeBallX * AdjRate + Offset),
-                (byte)((int)ParamEyeBallY * AdjRate + Offset),
-                (byte)((int)ParamBrowLY * AdjRate + Offset),
-                (byte)((int)ParamBrowRY * AdjRate + Offset),
-                (byte)((int)ParamMouthForm * AdjRate + Offset),
-                (byte)((int)ParamMouthOpenY * AdjRate),
-                (byte)((int)ParamCheek * AdjRate),
-                (byte)((int)ParamBreath * AdjRate)
+                (byte)((int)(ParamAngleX * AngleRate) + Offset),
+                (byte)((int)(ParamAngleY * AngleRate) + Offset),
+                (byte)((int)(ParamAngleZ * AngleRate) + Offset),
+                (byte)(int)(ParamEyeLOpen * AdjRate),
+                (byte)(int)(ParamEyeROpen * AdjRate),
+                (byte)((int)(ParamEyeBallX * AdjRate) + Offset),
+                (byte)((int)(ParamEyeBallY * AdjRate) + Offset),
+                (byte)((int)(ParamBrowLY * AdjRate) + Offset),
+                (byte)((int)(ParamBrowRY * AdjRate) + Offset),
+                (byte)((int)(ParamMouthForm * AdjRate) + Offset),
+                (byte)(int)(ParamMouthOpenY * AdjRate),
+                (byte)(int)(ParamCheek * AdjRate),
+                (byte)(int)(ParamBreath * AdjRate)
             };
             return data;
         }
 
         public static Param FromByteArray(byte[] data)
         {
-            if (data.Length < 24)
+            if (data.Length < 13)
             {
                 throw new Exception("Data length is not enough");
             }
             var param = new Param
             {
-                ParamAngleX = data[0] * 30 / AdjRate - Offset,
-                ParamAngleY = data[1] * 30 / AdjRate - Offset,
-                ParamAngleZ = data[2] * 30 / AdjRate - Offset,
+                ParamAngleX = data[0] / (float)AngleRate - Offset,
+                ParamAngleY = data[1] / (float)AngleRate - Offset,
+                ParamAngleZ = data[2] / (float)AngleRate - Offset,
                 ParamEyeLOpen = data[3] / (float)AdjRate,
                 ParamEyeROpen = data[4] / (float)AdjRate,
                 ParamEyeBallX = data[5] / (float)AdjRate - Offset,
@@ -97,7 +98,7 @@ namespace detection
             return JsonUtility.FromJson<Param>(json);
         }
 
-        public static Param operator -(Param param1, Param param2)
+        public static Param operator -(in Param param1, in Param param2)
         {
             return new Param
             {
@@ -117,7 +118,7 @@ namespace detection
             }.Clamp();
         }
 
-        public static Param operator +(Param param1, Param param2)
+        public static Param operator +(in Param param1, in Param param2)
         {
             return new Param
             {
@@ -137,7 +138,7 @@ namespace detection
             }.Clamp();
         }
         
-        public static Param operator *(Param param, double rate)
+        public static Param operator *(in Param param, in double rate)
         {
             return new Param
             {
@@ -157,7 +158,7 @@ namespace detection
             }.Clamp();
         }
 
-        public static Param operator *(double rate, Param param)
+        public static Param operator *(in double rate, in Param param)
         {
             return new Param
             {
@@ -177,27 +178,7 @@ namespace detection
             }.Clamp();
         }
         
-        public static Param operator /(Param param, double rate)
-        {
-            return new Param
-            {
-                ParamAngleX = param.ParamAngleX / (float)rate,
-                ParamAngleY = param.ParamAngleY / (float)rate,
-                ParamAngleZ = param.ParamAngleZ / (float)rate,
-                ParamEyeLOpen = param.ParamEyeLOpen / (float)rate,
-                ParamEyeROpen = param.ParamEyeROpen / (float)rate,
-                ParamEyeBallX = param.ParamEyeBallX / (float)rate,
-                ParamEyeBallY = param.ParamEyeBallY / (float)rate,
-                ParamBrowLY = param.ParamBrowLY / (float)rate,
-                ParamBrowRY = param.ParamBrowRY / (float)rate,
-                ParamMouthForm = param.ParamMouthForm / (float)rate,
-                ParamMouthOpenY = param.ParamMouthOpenY / (float)rate,
-                ParamCheek = param.ParamCheek,
-                ParamBreath = param.ParamBreath / (float)rate
-            }.Clamp();
-        }
-
-        public static Param operator /(double rate, Param param)
+        public static Param operator /(in Param param, in double rate)
         {
             return new Param
             {
