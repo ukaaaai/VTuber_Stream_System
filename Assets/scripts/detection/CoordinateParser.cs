@@ -10,7 +10,7 @@ namespace detection
         private const float DefaultBlowRatio = 1.5f;
         private static Param _paramFiltered;
 
-        public static Param Parse(in Complex[] landmarkPoints, in (int row, int col) shape, in Mat mat)
+        public static ref Param Parse(in Complex[] landmarkPoints, in (int row, int col) shape, in Mat mat)
         {
             var eyeRatio = GetEyeRatio(landmarkPoints);
             var pupil = GetPupil(landmarkPoints, mat, eyeRatio);
@@ -18,8 +18,7 @@ namespace detection
             var blow = GetBlow(landmarkPoints);
             var mouth = GetMouth(landmarkPoints);
             HeadPoseEstimation.Solve(landmarkPoints, shape, out var rot);
-
-            return _paramFiltered = new Param
+            _paramFiltered = new Param
             {
                 ParamAngleX = rot.yaw,
                 ParamAngleY = rot.pitch,
@@ -34,7 +33,9 @@ namespace detection
                 ParamMouthOpenY = mouth.y,
                 ParamCheek = 0,
                 ParamBreath = Live2Dmodel.ModelManager.ParamBreath
-            } + _paramFiltered / 6;
+            };
+
+            return ref _paramFiltered;
         }
 
         private static Rect MakeRect(Complex[] points)
@@ -55,7 +56,7 @@ namespace detection
             var rightRatio = 
                 Math.Abs((points[44].Imaginary - points[46].Imaginary) / (points[43].Real - points[44].Real));
 
-            return (Math.Clamp(leftRatio / 0.8f, 0, 1), Math.Clamp(rightRatio / 0.8f, 0, 1));
+            return (Math.Clamp((int)(leftRatio * 2) * 2 / 2f, 0, 1), Math.Clamp((int)(rightRatio * 2) * 2 / 2f, 0, 1));
         }
 
         private static (float x, float y) GetPupil(in Complex[] points, in Mat image, in (float left, float right) eyeRatio)
@@ -106,14 +107,13 @@ namespace detection
                 ;
         }
 
-        private static (float y, float x) GetMouth(in Complex[] points)
+        private static (float x, float y) GetMouth(in Complex[] points)
         {
-            return (
-                Math.Clamp(2 * (points[62].Imaginary - points[30].Imaginary) / 
-                    (points[66].Imaginary- points[62].Imaginary) - 1, -1, 1),
-                Math.Clamp(2 * (points[54].Real - points[48].Real) / 
-                    (points[35].Real - points[31].Real) - 1, 0, 1)
-            );
+            var mouthForm = 1 - (points[64].Real - points[61].Real)/ (points[35].Real - points[31].Real) * 2;
+            var mouthOpenY = (int)((points[62].Imaginary - points[65].Imaginary) /
+                (points[29].Imaginary - points[30].Imaginary) * 4) / 4f;
+            mouthOpenY = Math.Clamp(Math.Abs(mouthOpenY), 0, 1);
+            return (mouthForm, Math.Clamp(mouthOpenY, -1, 1));
         }
     }
 }
