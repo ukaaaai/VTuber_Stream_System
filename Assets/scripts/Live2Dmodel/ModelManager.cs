@@ -44,7 +44,7 @@ namespace Live2Dmodel
             _model.Parameters[_paramIDs[12]].Value = ParamBreath;
         }
 
-        public void UpdateParam(detection.Param param)
+        public void UpdateParam(in detection.Param param)
         {
             _userParam = param;
         }
