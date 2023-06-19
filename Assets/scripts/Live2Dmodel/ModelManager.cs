@@ -6,11 +6,18 @@ using Live2D.Cubism.Core;
 using Live2D.Cubism.Framework.Json;
 using Live2D.Cubism.Rendering;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Live2Dmodel
 {
     public class ModelManager : MonoBehaviour
     {
+        [Serializable]
+        private class ModelPath : UnityEvent<string>{}
+        [SerializeField]
+        private ModelPath path = new();
+
         private string _modelPath;
         private CubismModel _model;
         private readonly int[] _paramIDs = new int[13];
@@ -87,10 +94,13 @@ namespace Live2Dmodel
             catch
             {
                 _model = null;
+                return;
             }
+            
+            path.Invoke(_modelPath);
         }
 
-        private static object LoadAsset(Type assetType, string absolutePath)
+        public static object LoadAsset(Type assetType, string absolutePath)
         {
             if (assetType == typeof(byte[])) return File.ReadAllBytes(absolutePath);
             if (assetType == typeof(string)) return File.ReadAllText(absolutePath);
