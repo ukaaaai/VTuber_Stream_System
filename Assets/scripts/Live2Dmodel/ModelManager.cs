@@ -12,13 +12,15 @@ namespace Live2Dmodel
     public class ModelManager : MonoBehaviour
     {
         private string _modelPath;
+        private string _localModelZipPath = string.Empty;
         private CubismModel _model;
         private readonly int[] _paramIDs = new int[13];
-        private Dictionary<int, CubismModel> _remoteModels;
-        private Dictionary<int, int[]> _remoteModelParamIDs;
         public static float ParamBreath;
         private float _deltaBreath = 0.1f;
         private detection.Param _userParam;
+        
+        private Dictionary<int, CubismModel> _remoteModels;
+        private Dictionary<int, int[]> _remoteModelParamIDs;
 
         private void Update()
         {
@@ -86,8 +88,13 @@ namespace Live2Dmodel
             }
             catch
             {
+                Destroy(_model.gameObject);
                 _model = null;
+                return;
             }
+
+            _localModelZipPath = ModelDataConverter.ConvertToZip(_modelPath);
+            ModelTransporter.SendModel(_localModelZipPath);
         }
 
         private static object LoadAsset(Type assetType, string absolutePath)
