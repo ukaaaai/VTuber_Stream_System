@@ -7,6 +7,7 @@ public sealed class GameManager : MonoBehaviour
     private static GameManager _instance;
     private ModelManager _modelManager;
     private bool _isPause = true;
+    private IDetector _detector;
 
     private void Awake(){
         if (_instance == null)
@@ -20,12 +21,14 @@ public sealed class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         Application.targetFrameRate = 30;
+
+        _detector = new DlibDetector();
     }
 
     private void Start()
     {
         CameraManager.Init();
-        Detection.Init();
+        _detector.Init();
         _modelManager = FindObjectOfType<ModelManager>();
     }
     
@@ -45,7 +48,7 @@ public sealed class GameManager : MonoBehaviour
     {
         if (_isPause) return;
         var frame = CameraManager.Instance.GetFrame();
-        var param = await Detection.Detect(frame);
+        var param = await _detector.Detect(frame);
         if(param.HasValue) _modelManager.UpdateParam(param.Value);
     }
     private void OnApplicationQuit()

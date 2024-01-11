@@ -7,12 +7,12 @@ using OpenCvSharp;
 
 namespace detection
 {
-    public static class Detection
+    public class DlibDetector : IDetector
     {
         private static readonly FrontalFaceDetector FaceDetector;
         private static readonly ShapePredictor ShapePredictor;
 
-        static Detection()
+        static DlibDetector()
         {
             FaceDetector = Dlib.GetFrontalFaceDetector();
             using var fs = File.OpenRead(UnityEngine.Application.dataPath + "/StreamingAssets/shape_predictor_68_face_landmarks.dat");
@@ -22,9 +22,9 @@ namespace detection
             ShapePredictor = ShapePredictor.Deserialize(bytes);
         }
 
-        public static void Init(){}
+        public void Init(){}
 
-        private static Param? DetectTask(in Mat mat)
+        public Param? DetectTask(in Mat mat)
         {
             var steps = mat.ElemSize() * CameraManager.Width;
             
@@ -50,7 +50,7 @@ namespace detection
             return CoordinateParser.Parse(points, (CameraManager.Height, CameraManager.Width), mat);
         }
 
-        public static UniTask<Param?> Detect(in Mat mat)
+        public UniTask<Param?> Detect(in Mat mat)
         {
             return new UniTask<Param?>(DetectTask(mat));
         }
