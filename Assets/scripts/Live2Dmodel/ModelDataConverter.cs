@@ -14,7 +14,9 @@ namespace Live2Dmodel
         {
             var parentDirectory = Directory.GetParent(path);
             if (parentDirectory is null) return string.Empty;
-            var zipPath = UnityEngine.Application.persistentDataPath + "/models/myModel.zip";
+            var dirPath = UnityEngine.Application.persistentDataPath + "/models";
+            var zipPath = dirPath + "/myModel.zip";
+            if(!Directory.Exists(dirPath)) Directory.CreateDirectory(dirPath);
             if(File.Exists(zipPath)) File.Delete(zipPath);
             ZipFile.CreateFromDirectory(parentDirectory.FullName, zipPath);
             return zipPath;

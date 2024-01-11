@@ -94,7 +94,7 @@ namespace Live2Dmodel
             }
 
             _localModelZipPath = ModelDataConverter.ConvertToZip(_modelPath);
-            ModelTransporter.SendModel(_localModelZipPath);
+            // ModelTransporter.SendModel(_localModelZipPath);
         }
 
         private static object LoadAsset(Type assetType, string absolutePath)
