@@ -1,12 +1,6 @@
 {
     "managedList": [
         {
-            "packageName": "System.Runtime.CompilerServices.Unsafe",
-            "fileNames": [
-                "System.Runtime.CompilerServices.Unsafe"
-            ]
-        },
-        {
             "packageName": "OpenCvSharp4.Windows",
             "fileNames": []
         },
@@ -30,6 +24,12 @@
             "packageName": "DlibDotNet",
             "fileNames": [
                 "DlibDotNet"
+            ]
+        },
+        {
+            "packageName": "System.Runtime.CompilerServices.Unsafe",
+            "fileNames": [
+                "System.Runtime.CompilerServices.Unsafe"
             ]
         }
     ]
