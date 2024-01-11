@@ -40,21 +40,19 @@ namespace detection
 
         private static Rect MakeRect(Complex[] points)
         {
-            var left = (int)points.Min(t => t.Real);
-            var top = (int)points.Min(t => t.Imaginary);
-            var width = (int)points.Max(t => t.Real) - left;
-            var height = (int)points.Max(t => t.Imaginary) - top;
+            var left = (int)points.Min(t => t.Re);
+            var top = (int)points.Min(t => t.Im);
+            var width = (int)points.Max(t => t.Re) - left;
+            var height = (int)points.Max(t => t.Im) - top;
 
             return new Rect(left, top, width, height);
         }
 
         private static (float left, float right) GetEyeRatio(in Complex[] points)
         {
-            var leftRatio =
-                Math.Abs((points[37].Imaginary - points[41].Imaginary) / (points[38].Real - points[37].Real));
+            var leftRatio = Math.Abs((points[37].Im - points[41].Im) / (points[38].Re - points[37].Re));
             
-            var rightRatio = 
-                Math.Abs((points[44].Imaginary - points[46].Imaginary) / (points[43].Real - points[44].Real));
+            var rightRatio = Math.Abs((points[44].Im - points[46].Im) / (points[43].Re - points[44].Re));
 
             return (Math.Clamp((int)(leftRatio * 2) * 2 / 2f, 0, 1), Math.Clamp((int)(rightRatio * 2) * 2 / 2f, 0, 1));
         }
@@ -110,8 +108,7 @@ namespace detection
         private static (float x, float y) GetMouth(in Complex[] points)
         {
             var mouthForm = 1 - (points[64].Real - points[61].Real)/ (points[35].Real - points[31].Real) * 2;
-            var mouthOpenY = (int)((points[62].Imaginary - points[65].Imaginary) /
-                (points[29].Imaginary - points[30].Imaginary) * 4) / 4f;
+            var mouthOpenY = (int)((points[62].Im - points[65].Im) / (points[29].Im - points[30].Im) * 4) / 4f;
             mouthOpenY = Math.Clamp(Math.Abs(mouthOpenY), 0, 1);
             return (mouthForm, Math.Clamp(mouthOpenY, -1, 1));
         }

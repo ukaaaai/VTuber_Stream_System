@@ -24,6 +24,9 @@ namespace Util
             y *= 1.5f - x * 0.5f * y * y;
             return y;
         }
+        
+        public float Im => Imaginary;
+        public float Re => Real;
 
         public float Magnitude => 1 / Invsqrt();
         public float SqrMagnitude => Real * Real + Imaginary * Imaginary;

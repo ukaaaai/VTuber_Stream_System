@@ -14,7 +14,7 @@ namespace UI
             var paths = StandaloneFileBrowser.OpenFilePanel(
                 "select model", 
                 "", 
-                new []{ new ExtensionFilter("json", "json")},
+                new []{ new ExtensionFilter("model3.json", "model3.json")},
                 false);
             onSelect.Invoke(paths.Length == 0 ? string.Empty : paths[0]);
         }

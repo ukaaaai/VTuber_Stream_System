@@ -70,3 +70,7 @@ Google*
 */Standalone*
 
 Assets/Plugins/UniTask*
+
+*.zip
+
+*Zenject*

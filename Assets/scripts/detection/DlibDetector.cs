@@ -2,31 +2,29 @@ using System.IO;
 using Util;
 using DlibDotNet;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using OpenCvSharp;
-using UnityEngine;
 
 namespace detection
 {
-    public static class Detection
+    public class DlibDetector : IDetector
     {
         private static readonly FrontalFaceDetector FaceDetector;
         private static readonly ShapePredictor ShapePredictor;
 
-        static Detection()
+        static DlibDetector()
         {
             FaceDetector = Dlib.GetFrontalFaceDetector();
-            using var fs = File.OpenRead(Application.dataPath + "/StreamingAssets/shape_predictor_68_face_landmarks.dat");
+            using var fs = File.OpenRead(UnityEngine.Application.dataPath + "/StreamingAssets/shape_predictor_68_face_landmarks.dat");
             var bytes = new byte[fs.Length];
             // ReSharper disable once MustUseReturnValue
             fs.Read(bytes, 0, bytes.Length);
             ShapePredictor = ShapePredictor.Deserialize(bytes);
         }
 
-        public static void Init(){}
+        public void Init(){}
 
-        private static Param? DetectTask(in Mat mat)
+        public Param? DetectTask(in Mat mat)
         {
             var steps = mat.ElemSize() * CameraManager.Width;
             
@@ -44,15 +42,15 @@ namespace detection
 
             var shapes = ShapePredictor.Detect(image, faces[0]);
             var points = new Complex[68];
-            Parallel.For(0, 68, i =>
+            for(uint i = 0; i < 68; i++)
             {
-                var point = shapes.GetPart((uint)i);
+                var point = shapes.GetPart(i);
                 points[i] = new Complex(point.X, point.Y);
-            });
+            }
             return CoordinateParser.Parse(points, (CameraManager.Height, CameraManager.Width), mat);
         }
 
-        public static UniTask<Param?> Detect(in Mat mat)
+        public UniTask<Param?> Detect(in Mat mat)
         {
             return new UniTask<Param?>(DetectTask(mat));
         }
