@@ -49,10 +49,5 @@ namespace detection
             }
             return CoordinateParser.Parse(points, (CameraManager.Height, CameraManager.Width), mat);
         }
-
-        public UniTask<Param?> Detect(in Mat mat)
-        {
-            return new UniTask<Param?>(DetectTask(mat));
-        }
     }
 }
