@@ -1,12 +1,14 @@
 using detection;
 using Live2Dmodel;
 using UnityEngine;
+using Zenject;
 
 public sealed class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     private ModelManager _modelManager;
     private bool _isPause = true;
+    [Inject]
     private IDetector _detector;
 
     private void Awake(){
@@ -21,8 +23,6 @@ public sealed class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         Application.targetFrameRate = 30;
-
-        _detector = new DlibDetector();
     }
 
     private void Start()
