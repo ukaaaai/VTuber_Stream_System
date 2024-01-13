@@ -66,6 +66,11 @@ namespace detection
             return mat;
         }
 
+        public WebCamTexture GetTexture()
+        {
+            return _webCamTexture;
+        }
+
         public void Start()
         {
             if(_webCamTexture != null)
