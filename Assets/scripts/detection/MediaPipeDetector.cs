@@ -10,12 +10,14 @@ namespace detection
 
         public void Init()
         {
-            
+
         }
-        
+
         public Param? DetectTask(in Mat mat)
         {
             return null;
         }
+
+        public void Dispose(){}
     }
 }
