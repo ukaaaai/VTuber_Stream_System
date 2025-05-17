@@ -12,5 +12,7 @@ namespace detection
         {
             return new UniTask<Param?>(DetectTask(mat));
         }
+        
+        public void Dispose();
     }
 }

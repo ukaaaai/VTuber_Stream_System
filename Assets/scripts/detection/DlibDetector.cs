@@ -49,5 +49,7 @@ namespace detection
             }
             return CoordinateParser.Parse(points, (CameraManager.Height, CameraManager.Width), mat);
         }
+        
+        public void Dispose(){}
     }
 }
