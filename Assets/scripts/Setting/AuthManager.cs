@@ -40,7 +40,7 @@ namespace Setting
                     Debug.LogError("SignInAnonymouslyAsync encountered an error: " + task.Exception);
                     return;
                 }
-                _user = task.Result;
+                _user = task.Result.User;
                 Debug.LogFormat("User signed in successfully: {0} ({1})", _user.DisplayName, _user.UserId);
                 IsLogin = true;
             });
