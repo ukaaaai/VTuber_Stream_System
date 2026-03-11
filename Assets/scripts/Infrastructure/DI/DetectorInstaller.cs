@@ -1,7 +1,7 @@
 ﻿using detection;
 using Zenject;
 
-namespace DI
+namespace Infrastructure.DI
 {
     public class DetectorInstaller : Installer<DetectorInstaller>
     {

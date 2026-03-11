@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Util
+namespace Common.Utility
 {
     public readonly struct Complex: IEquatable<Complex>, IComparable<Complex>, IFormattable
     {

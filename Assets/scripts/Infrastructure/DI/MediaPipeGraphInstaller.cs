@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace DI
+namespace Infrastructure.DI
 {
     public class MediaPipeGraphInstaller :  Installer<TextAsset, MediaPipeGraphInstaller>
     {

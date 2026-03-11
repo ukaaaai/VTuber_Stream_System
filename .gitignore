@@ -76,3 +76,5 @@ Assets/Plugins/UniTask*
 Packages/com.*
 
 Assets/MediaPipeUnity
+
+.DS_Store
